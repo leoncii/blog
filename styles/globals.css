@@ -1,9 +1,23 @@
+#__next {
+  --light: #f1a832;
+  --dark: #1d1d1d;
+  --blue: #2e2cda;
+  --dark-violet: #8c2364;
+  --light-violet: hsl(323, 100%, 54%);
+  --bg: #f2f2ef;
+  --bg-0:#959287;
+  --brown: #c49d75;
+  font: 100%/1.75 'Merriweather', serif;
+  word-wrap: break-word;
+  background-color: var(--bg);
+  overflow: hidden;
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,4 +27,72 @@ a {
 
 * {
   box-sizing: border-box;
+}
+ul,
+li {
+  padding: 0;
+  font-weight: 600;
+}
+
+img {
+  width: 100%;
+}
+pre {
+  white-space: pre-wrap;
+  text-align: start;
+  background-color: #101010 !important;
+  padding: 1rem;
+  font-size: 1.005rem;
+  font-weight: 300;
+  line-height: 1.3;
+  font-family: 'JetBrains Mono', monospace;
+  color: #f1eeee;
+}
+h1 {
+  color: var(--dark);
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: bold; 
+}
+h2 {
+  color: var(--light);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+  width: 305px;
+  line-height: 1.4;
+  margin: 0 auto;
+}
+p {
+  padding: 1rem;
+  font-size: 1.13rem;
+  line-height: 1.75;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+}
+
+.page-scroll-indicator {
+  width: 100%;
+  height: 5px;
+  position: fixed;
+  top: 49px;
+}
+
+.progress {
+  width: 0%;
+  height: 5px;
+  background-color: rgb(255, 157, 0);
+  z-index: 9999;
+}
+
+small {
+  font-size: .7rem;
+  padding: .4rem .8rem;
+  letter-spacing: 1px; 
+}
+
+pre code {
+  color: whitesmoke !important;
+  background-color: #101010 !important;
 }
