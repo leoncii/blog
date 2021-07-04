@@ -1,7 +1,7 @@
 import { BlogPost } from '../../../containers/BlogPost'
 import Highlight, { defaultProps } from "prism-react-renderer"
-import { HighlightCodeBlock } from '../../../example.js'
-import Comments from '../../../containers/Comments'
+import { HighlightCodeBlock } from '../../../utilities/HighlightCodeBlock.js'
+import { Comments } from '../../../containers/Comments'
 import img from '../../../public/Portal.jpg'
 const b1 = `
 import { memo, useEffect, useRef, useState } from 'react'
@@ -47,15 +47,16 @@ const b4 = `
 
 export const meta = {
   title: 'Cómo crear un portal en react',
-  description: 'Si no sabes como hacer portales en react solo ve este post y listo',
+  description: 'Sabes como hacer portales en react ? 👀 solo ve este post y listo',
   date: 'Jun 04, 2021',
   readTime: 4,
   imgUrl: img,
   isActive: true
 }
 
-
-export default ({ children }) => <BlogPost meta={meta}>{children}</BlogPost>
+export default function React_Portal({ children }) {
+  return <BlogPost meta={meta}>{children}</BlogPost>
+  }
 
   Veremos como crear un portal de react de manera sencilla y practica para ponerlo desde ya en use().
 
@@ -73,9 +74,9 @@ export default ({ children }) => <BlogPost meta={meta}>{children}</BlogPost>
 <HighlightCodeBlock block={b1} />
 
 
- - Crear un portal en el DOM con un identificador **id** ya enlazado 🎗 en el arbol del DOM.
- - Crea un portal 🙌 en un nuevo elemento del DOM que ya esta identificado por el **id** y cuando no hay elementos en el arbol del DOM usa el **id** existente.
- - Cuando el portal **id** cambia en un portal ya montado lo borrara del identificador **id** del elemento anterior solo cuando ese elemento ya haya sido creado mientras el portal ya estaba montado.
+- Crear un portal en el DOM con un identificador **id** ya enlazado 🎗 en el arbol del DOM.
+- Crea un portal 🙌 en un nuevo elemento del DOM que ya esta identificado por el **id** y cuando no hay elementos en el arbol del DOM usa el **id** existente.
+- Cuando el portal **id** cambia en un portal ya montado lo borrara del identificador **id** del elemento anterior solo cuando ese elemento ya haya sido creado mientras el portal ya estaba montado.
 
   ## Inspeccionando el codigo
 
@@ -95,6 +96,3 @@ export default ({ children }) => <BlogPost meta={meta}>{children}</BlogPost>
   <HighlightCodeBlock block={b4} />
 
   Cada vez que suceda un cambio en el estado de nuestro **id** vamos a actualizar nuestra referencia del **element** a un elemento 🎢 dinamico.
-
-
-<Comments />

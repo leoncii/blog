@@ -9,22 +9,25 @@ export const Post = ({ post }) => {
 
   return (<article>
     <HeadPost meta={meta} />
-    <Link href={"/blog" + link}>
-      <a>Leer más 📖</a>
-    </Link>
+    <div>
+      <Link href={`/blog${link}`}>
+        <a>Leer más 📖</a>
+      </Link>
+    </div>
     <style jsx>
       {`
         article {
+          display: grid;
           margin-bottom: 3rem;
           background-color: var(--dark);
           padding: 20px;
-        }        
+        }   
         a {
           color : var(--bg);
           border-bottom: 1px solid var(--bg-0);
         }
       `}
     </style>
-  </article>
+  </article >
   )
 }

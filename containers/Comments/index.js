@@ -1,32 +1,42 @@
 import { useContext, useState, useEffect } from 'react'
-import Comment from '../../components/Comment'
+import { Comment } from '../Comment'
 import { Context } from '../../context/userProvider'
 import {
   createComment,
   listenLatestComments,
-  getALlComments
+  getMoreUrlComments
 } from '../../firebase/db'
+import { useRouter } from 'next/router'
+import { Button } from '../../components/Button'
 
-export default function Comments() {
-  const { session, loading } = useContext(Context)
+export function Comments() {
+  const { session, loading, signIn } = useContext(Context)
   const [timeline, setTimeline] = useState([])
+  const { route } = useRouter()
+  const [, , urlPost] = route.split('/')
 
   useEffect(() => {
-    listenLatestComments(setTimeline)
+    listenLatestComments({ setTimeline, urlPost })
   }, [])
 
-  const handleGetMoreComments = async () => {
-    const newTimeline = await getALlComments()
-    setTimeline(newTimeline)
+  const handleGetMoreComments = () => {
+    getMoreUrlComments({ urlPost })
+      .then(res => {
+        setTimeline(res)
+      })
+      .catch(e => e && new Error('Vaya parece que algo salio mal'))
 
   }
-
+  const handleLoginWithGoogle = () => signIn('google')
   return <>
     <section>
       <div>
         <h3>Deja un comentario...</h3>
         {
           loading && <span>Loading...</span>
+        }
+        {
+          !session && <Button onClick={handleLoginWithGoogle} warning>Iniciar sesión</Button>
         }
         {
           session && <Comment
@@ -46,31 +56,21 @@ export default function Comments() {
           />)
         }
         {
-          timeline.length <= 3 && <button onClick={handleGetMoreComments}>Ver más</button>
+          timeline.length <= 3 && <Button onClick={handleGetMoreComments}>Ver más</Button>
         }
       </div>
     </section>
     <style jsx>{`
-      div {
-        padding: 0 1rem;
-      }
       section {
         text-align:center;
+        padding-bottom: 3rem;
+      }
+      div {
+        padding: 0 1rem;
       }
       h3 {
         font-size: 1.8rem;
         font-weight: 800;
-      }
-      button {
-        display: block;
-        background-color: var(--dark);
-        width: 115px;
-        cursor: pointer;
-        color: #fff;
-        margin: 0 auto 5rem;
-        border: none;
-        border-radius: 3px;
-        height: 32px;
       }
     `}</style>
   </>

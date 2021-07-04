@@ -1,6 +1,6 @@
-export default function ChipsPlayground() {
+export function Chips() {
 
-  const colors = ["red", "blue", "yellow", "pink", "black", "rebeccapurple", "orange", "green", "brown", "gray"]
+  const colors = ['#f1a832', "#1d1d1d", "#2e2cda", "pink", "#366b55", "rebeccapurple", "#8c2364", "green", "brown", "gray"]
   const label = ["ReactJs", "JavaScript", "Html", "Css"]
 
   return (<>
@@ -8,32 +8,41 @@ export default function ChipsPlayground() {
       <div>
         <span>{label[0]}</span>
         <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
+        <span>{label[1]}</span>
         <span>{label[2]}</span>
         <span>{label[3]}</span>
       </div>
     </section>
     <style jsx>{`
       section {
-        max-width: 320px;
-        margin: 0 auto;
-        padding-bottom: 4rem;
+        max-width: 300px;
         padding-top: 5rem;
+        padding-bottom: 2rem;
+        margin: 0 auto;
+        max-width: 650px;
       }
       div {
-        display:flex;
-        max-width: fit-content;
+        display: flex;
         color: #fff;
         flex-wrap: wrap;
-        padding: .4rem .8rem;
+        margin: .4rem 20px;
         place-content: center;
       }
       span {
-        margin: .1rem ;
-        padding: .3rem .6rem;
+        margin: .3rem ;
+        padding: .2rem .4rem;
         border-radius: 20px 0 20px 0;
         align-self: center;
-        letter-spacing: 1px;
-        font-weight: bold;
+        font-weight: 400;
+        letter-spacing: .3px;
         background-color: ${colors[0]};
       }
       span:nth-of-type(1) {

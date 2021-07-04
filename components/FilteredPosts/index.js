@@ -11,7 +11,11 @@ export const FilteredPosts = ({ search, filteredPostsWithMemo }) => {
     </div>
     <style jsx>{`
       div {
+        display: grid;
         margin-top: 3rem;
+        place-content:center;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+        grid-gap: 1.85rem;
       }
     `}</style>
   </>

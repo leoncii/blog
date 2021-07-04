@@ -20,5 +20,4 @@ if (!firebase.apps.length) {
 const INCREMENT_VALUE = 1
 export const increment = firebase.firestore.FieldValue.increment(INCREMENT_VALUE)
 
-
 export default firebase

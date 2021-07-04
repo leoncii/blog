@@ -1,8 +1,7 @@
 import { useState, useMemo } from 'react'
-import Search from '../../components/Search'
-import Chips from '../Chips'
+import { Search } from '../../components/Search'
+import { Chips } from '../../components/Chips'
 import { FilteredPosts } from '../../components/FilteredPosts'
-import Comments from '../Comments'
 import { posts } from '../../getAllPosts'
 
 export function Posts() {
@@ -11,7 +10,7 @@ export function Posts() {
   const handleSearch = e => {
     setSearch(e.target.value)
   }
-  const removeAccents = (str) => {
+  const normalizeTitle = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 
@@ -21,7 +20,8 @@ export function Posts() {
         link,
         module: { meta: { title } }
       } = post
-      const string = removeAccents(title)
+      console.log("[LINK;title]",link, title)
+      const string = normalizeTitle(title)
       return string.toLowerCase().includes(search.toLowerCase())
     })
   }, [search])
@@ -29,7 +29,6 @@ export function Posts() {
   return <>
     <div>
       <Chips />
-      <h1>¿Qué buscas?</h1>
       <Search
         onChange={handleSearch}
         value={search}
@@ -42,7 +41,7 @@ export function Posts() {
     <style jsx>{`
       div {
         text-align: center;
-        padding:0 10px;
+        padding: 0 10px;
       }
       h1 {
         width: 337px;

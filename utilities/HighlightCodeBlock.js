@@ -9,7 +9,6 @@ export const HighlightCodeBlock = ({ block }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => (
             <section key={i} {...getLineProps({ line, key: i })}>
-              <small>{i + 1}</small>
               <div>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token, key })} />
@@ -19,12 +18,6 @@ export const HighlightCodeBlock = ({ block }) => (
           ))}
         </pre>
         <style jsx>{`
-          pre {
-            text-align: left;
-            margin: 1em 0;
-            padding: 0.5em;
-            overflow: scroll;
-          }
           section {
             display: table-row;
           }

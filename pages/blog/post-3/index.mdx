@@ -1,6 +1,6 @@
-import BlogPost from '../../../containers/BlogPost'
+import { BlogPost } from '../../../containers/BlogPost'
 import img from '../../../public/Portal.jpg'
-import Comments from '../../../containers/Comments'
+import { Comments } from '../../../containers/Comments'
 
 export const meta = {
   title: 'Introduction to Next JS',
@@ -10,7 +10,9 @@ export const meta = {
   imgUrl: img
 }
 
-export default ({ children }) => <BlogPost meta={meta}>{children}</BlogPost>;
+export default function Post_3 ({ children }){
+  return <BlogPost meta={meta}>{children}</BlogPost>
+} 
 
 ## My Headline 
 
