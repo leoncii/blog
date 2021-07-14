@@ -1,5 +1,5 @@
 
-export default function LeonardoRed(props) {
+export default function Leonardo(props) {
   const { roll } = props
   return (<>
     <svg
@@ -34,6 +34,8 @@ export default function LeonardoRed(props) {
         stroke="#000"
       />
     </svg>
+
+
     <style jsx>{`
         svg {
           width: 94px;

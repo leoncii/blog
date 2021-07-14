@@ -1,56 +1,76 @@
 import Banner from '../../svg/banner'
 import Moon from '../../svg/moon'
+import { Space } from '../../svg/space'
 
 export function Main() {
   return <>
     <div className='container'>
-      <main>
       <Moon />
+      <main>
         <div className='hero'>
           <section>
-            <h1>Creado por un propósito</h1>
+            <h1>Blog T-Leo</h1>
             <p>
-              Cuída mis enseñanzas y no te alejes de ellas, que de ellas depende tu vida.
+              Pin sen pum ci pan llo
             </p>
           </section>
         </div>
       </main>
+      <Space />
     </div>
     <style jsx>{`
     .container {
       display: flex;
-      height: 100vh;
+      height: 70vh;
       width: 100%;
       justify-content: space-around;
       text-align: center;
-      background-color: var(--bg-0);
+      background-color: var(--bg);
     }
     main {
-      background-color: var(--dark);
       height: inherit;
       width: 100%;
+      z-index: 1;
     }
     .hero {
-      padding-top: 88px;
+      padding-top: 138px;
       display: flex;
       width: 100%;
       align-items: space-between;
       flex-direction: column;
+      height: inherit;
     }
     section {
       padding: 1% 6% 0;
     }
-   
+    .arrows {
+      width: 50px;
+      height: 50px;
+      background-color: #222;
+    }
+
     h1 {
-      color: var(--bg);
+      color: var(--copilot-dark);
       display: block;
       place-content: center;
       font-weight: 800;
+      text-shadow: 0 -2px 1px var(--green);
     }
 
     p {
-      color: var(--copilot-white);
+      color: var(--copilot-dark);
+      font-weight: 600;
+      text-shadow: 0 0px 5px var(--copilot-white);
     }
-    `}</style>
+
+      @media only screen and (min-width: 768px) {
+        .hero {
+          text-align-last: start;
+        }
+        .container {
+          height: 90vh;
+        }
+    }
+  `}</style>
   </>
 }

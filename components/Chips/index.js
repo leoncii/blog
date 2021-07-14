@@ -1,24 +1,16 @@
 export function Chips() {
-
+  
   const colors = ['#f1a832', "#1d1d1d", "#2e2cda", "pink", "#366b55", "rebeccapurple", "#8c2364", "green", "brown", "gray"]
-  const label = ["ReactJs", "JavaScript", "Html", "Css"]
+  const chips = ["ReactJs", "JavaScript", "Html", "Css", "BlockChain", "NFT"]
 
   return (<>
     <section>
       <div>
-        <span>{label[0]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[1]}</span>
-        <span>{label[2]}</span>
-        <span>{label[3]}</span>
+        {
+          chips.map(chip => {
+            return <span key={chip}>{chip}</span>
+          })
+        }
       </div>
     </section>
     <style jsx>{`
@@ -56,6 +48,12 @@ export function Chips() {
       }
       span:nth-of-type(4) {
         background-color: ${colors[4]};
+      }
+      span:nth-of-type(5) {
+        background-color: ${colors[5]};
+      }
+      span:nth-of-type(6) {
+        background-color: ${colors[1]};
       }
     `}</style>
   </>

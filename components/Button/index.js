@@ -1,20 +1,24 @@
 
-export function Button({ onClick, children, warning }) {
+export function Button({ modal, onClick, border, children, warning }) {
   return <>
-    <button onClick={onClick}>
-      <span>{children}</span>
-    </button>
+    {
+      modal ?
+        <button onClick={onClick}>
+          <span>{children}</span>
+        </button> : false
+    }
     <style jsx>{`
       button {
-      display: block;
-      background-color: ${warning ? 'transparent' : "var(--dark)"};
-      width: 115px;
-      cursor: pointer;
-      color: ${warning ? 'red' : "#fff"};
-      margin: 0 auto 5rem;
-      border: none;
-      border-radius: 3px;
-      height: 32px;
+        display: ${modal ? 'block' : 'none'};
+        background-color: ${warning ? 'transparent' : "var(--dark)"};
+        width: 115px;
+        cursor: pointer;
+        color: ${warning ? 'red' : "#fff"};
+        margin: .13rem auto;
+        border: none;
+        outline: 1px solid red;
+        border-radius: 3px;
+        height: 32px;
       }
     `}</style>
   </>

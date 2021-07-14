@@ -1,7 +1,7 @@
 import Whatsapp from '../../svg/footer/whatsapp'
 import Link from 'next/link'
 
-export function Footer() {
+export function Footer({ height }) {
 
   const whatsAppNumber = '59174361042'
   const textUrl = 'Hola%20leo...'
@@ -13,7 +13,7 @@ export function Footer() {
     </section>
     <style jsx>{`
     section {
-     height: 100vh;
+     height: ${!height ? '100vh' : height};
      background: linear-gradient(217deg, #1a1414cc, #141111cc 70.71%),
             linear-gradient(127deg, #141414cc, #141414cc 70.71%),
             linear-gradient(336deg, #000000cc, #180404cc 70.71%);

@@ -15,49 +15,17 @@ const mapCommentFromFirebaseToObject = (doc) => {
   return normalized
 }
 
-export async function getUserLink() {
-  return firebase.auth.OAuthProvider('google.com')
-    .then(res => console.log("[RES]", res))
-}
-
-export async function getRedirect() {
-  return firebase.auth().getRedirectResult()
-    .then(function (result) {
-      console.log("[RESULT]", result);
-      if (result.credential) {
-        var token = result.credential.accessToken;
-      }
-      var user = result.user;
+export async function getLikesFromUserId({ setUrlFirebase, session }) {
+  return await db.collection('likesFromUser')
+    .doc(setUrlFirebase)
+    .set({
+      user: session.user.email || session.user.name,
+      liked: true
     })
-  var provider = new firebase.auth.OAuthProvider('google.com');
-    console.log('PROVIDER',provider)
-  provider.addScope('profile');
-  provider.addScope('email');
-  firebase.auth().signInWithRedirect(provider);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export async function createUser(uid, data) {
-  return await db.collection('users')
-    .doc(uid)
-    .set({ uid, ...data }, { merge: true })
-}
-
-export async function createComment({ comment, posturl }) {
-  return await db.collection(posturl)
+export async function createComment({ comment, postUrl }) {
+  return await db.collection(postUrl)
     .doc()
     .set(comment, { merge: true })
 }
@@ -71,27 +39,14 @@ export async function getMoreUrlComments({ urlPost }) {
     })
 }
 
-export function listenLatestComments({ setTimeline: callbak, urlPost }) {
+export function listenLatestComments({ setComments: callback, urlPost }) {
   return db.collection(urlPost)
     .limit(3)
     .orderBy('date', 'desc')
     .onSnapshot(({ docs }) => {
       const newComments = docs.map(mapCommentFromFirebaseToObject)
-      callbak(newComments)
+      callback(newComments)
     })
-}
-
-export async function newLeadWithEmail({ email }, payload) {
-  return await db.collection('leads')
-    .doc(email)
-    .set({
-      data: payload,
-      date: new Date()
-    })
-}
-
-export async function likesArticles(url) {
-  await db.collection('likes')
 }
 
 

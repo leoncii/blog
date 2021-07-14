@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button } from '../Button'
 import { createComment } from '../../firebase/db'
-export function ChildComment({ img, name, date, session, p, url: posturl }) {
+export function ChildComment({ img, name, date, session, p, url: postUrl }) {
   const [text, setText] = useState('')
 
   const handleAddComment = (e) => {
@@ -12,12 +12,11 @@ export function ChildComment({ img, name, date, session, p, url: posturl }) {
       p: text,
       date: new Date()
     }
-    createComment({ comment, posturl })
+    createComment({ comment, postUrl })
     setText('')
   }
 
   const handleChange = e => {
-    console.log(e.target);
     setText(e.target.value)
   }
 
@@ -27,9 +26,8 @@ export function ChildComment({ img, name, date, session, p, url: posturl }) {
         <img width={125} height={125} src={img} alt={`Avatar from ${name}`} />
       </picture>
       <div><b>{name}</b> </div>
-      <small><i> {date.toString()}</i></small>
       {
-        session?.user.name === name && <>
+        session?.user.name === name && <><p>
           <textarea
             rows="5"
             value={text}
@@ -40,10 +38,15 @@ export function ChildComment({ img, name, date, session, p, url: posturl }) {
             onClick={handleAddComment}
             disabled={text.length < 1}
           >Comentar</button>
+        </p>
         </>
       }
-      <p><em>{p}</em></p>
-      <hr />
+      {
+        p.length >= 2 && <>
+          <small><i> {date.toString()}</i></small>
+          <p><em>{p}</em></p>
+        </>
+      }
     </main >
     <style jsx>{`
       main {
@@ -51,12 +54,13 @@ export function ChildComment({ img, name, date, session, p, url: posturl }) {
         place-items: center;
         text-align: center;
         max-width: 400px;
-        grid-template-columns: 90px 1fr;
+        grid-template-columns: 90px 1fr 1fr;
+        grid-template-rows: 45px 1fr 30px;
         margin: 1.8rem auto 1.4rem;
         grid-template-areas: 
-        "image name"
-        "image date"
-        "image p";
+        "image name date"
+        ". p p"
+        ". . .";
         opacity: ${session ? 1 : .6};
       }
       hr {
@@ -106,6 +110,9 @@ export function ChildComment({ img, name, date, session, p, url: posturl }) {
       }
       div {
         grid-area: name;
+        text-align: left;
+        width: 100%;
+        padding-left: .8rem;
       }
       p {
         grid-area: p;
@@ -115,6 +122,7 @@ export function ChildComment({ img, name, date, session, p, url: posturl }) {
         margin: 0;
         padding: .4rem .8rem;
         text-align: left;
+        width: 100%;
       }
       small {
         font-size: .7rem;

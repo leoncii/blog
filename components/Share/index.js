@@ -1,14 +1,18 @@
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import { Heart } from '../../svg/heart'
+import { HeartLiked } from '../../svg/heartLiked'
 
-export function Share({ onClick, likes, setUrlFirebase, verify }) {
+export function Share({ onClick, likes, setUrlFirebase, verify, session }) {
+
   return <>
     <section>
       <div className='bonico'>
         <div className='likes' onClick={onClick}>
-          <span> 👌 {likes}</span>
+          <span> {!session ? <Heart /> : <HeartLiked />} </span>
+          <span>{likes}</span>
+          {!session ? <small>signin</small> : ''}
         </div>
         <div className='share'>
-          <h3>Comparte 💖</h3>
           <small>
             <FacebookShareButton
               url='google.com'
@@ -16,7 +20,8 @@ export function Share({ onClick, likes, setUrlFirebase, verify }) {
             >
               <span>Facebook</span>
             </FacebookShareButton>
-
+          </small>
+          <small>
             <TwitterShareButton
               url='google.com'
               text="Check out this website: www.google.com"
@@ -35,6 +40,7 @@ export function Share({ onClick, likes, setUrlFirebase, verify }) {
         background-color: rgb(0,0,0);
         color: #fff;
         z-index: 1;
+        height: 48px;
       }
       .share {
         display: flex;
@@ -52,17 +58,22 @@ export function Share({ onClick, likes, setUrlFirebase, verify }) {
       }
       .likes {
         display: ${!setUrlFirebase ? 'none' : 'flex'};
-        cursor: pointer;
-        pointer-events: ${verify ? 'none' : 'auto'};
+        cursor: ${!session ? 'none' : 'pointer'};
+        pointer-events: ${!session ? 'none' : 'auto'};
         align-self: center;
       }
       span {
         margin-right: 5px;
         font-size: 14px;
         font-weight: 300px;
+        width: 100%;
+        align-self: center;
       }
       small {
         align-self: center;
+      }
+      .likes small:first-of-type {
+        color: red;
       }
     `}</style>
   </>

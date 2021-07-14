@@ -12,7 +12,8 @@ const nextConfig = {
     locales: ['es', 'eu'],
     defaultLocale: 'es'
   },
-  eslit: {
+  eslint: {
+    ignoreDuringBuilds: true,
     dirs: ['pages', 'components', 'containers', 'firebase']
   },
 }

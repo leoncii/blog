@@ -8,35 +8,39 @@ import {
 } from '../../firebase/db'
 import { useRouter } from 'next/router'
 import { Button } from '../../components/Button'
+import Link from 'next/link'
 
 export function Comments() {
   const { session, loading, signIn } = useContext(Context)
-  const [timeline, setTimeline] = useState([])
+  const [comments, setComments] = useState([])
   const { route } = useRouter()
   const [, , urlPost] = route.split('/')
 
   useEffect(() => {
-    listenLatestComments({ setTimeline, urlPost })
+    listenLatestComments({ setComments, urlPost })
   }, [])
 
   const handleGetMoreComments = () => {
     getMoreUrlComments({ urlPost })
       .then(res => {
-        setTimeline(res)
+        setComments(res)
       })
       .catch(e => e && new Error('Vaya parece que algo salio mal'))
-
   }
+
   const handleLoginWithGoogle = () => signIn('google')
   return <>
     <section>
       <div>
         <h3>Deja un comentario...</h3>
         {
-          loading && <span>Loading...</span>
-        }
-        {
-          !session && <Button onClick={handleLoginWithGoogle} warning>Iniciar sesión</Button>
+          !session && <>
+            <Link href='/signin'>
+              <a>
+                Iniciar sesión
+              </a>
+            </Link>
+          </>
         }
         {
           session && <Comment
@@ -47,7 +51,10 @@ export function Comments() {
           />
         }
         {
-          timeline.map(({ id, name, img, p, date }) => <Comment
+          comments.length <= 0 && <div> Loading...</div>
+        }
+        {
+          comments.map(({ id, name, img, p, date }) => <Comment
             key={id}
             name={name}
             img={img}
@@ -56,7 +63,7 @@ export function Comments() {
           />)
         }
         {
-          timeline.length <= 3 && <Button onClick={handleGetMoreComments}>Ver más</Button>
+          comments.length <= 3 && <Button onClick={handleGetMoreComments}>Ver más</Button>
         }
       </div>
     </section>
@@ -64,6 +71,7 @@ export function Comments() {
       section {
         text-align:center;
         padding-bottom: 3rem;
+        padding-top: 4rem;
       }
       div {
         padding: 0 1rem;
@@ -71,6 +79,11 @@ export function Comments() {
       h3 {
         font-size: 1.8rem;
         font-weight: 800;
+        margin: 2rem 0;
+        padding-bottom: 2rem;
+      }
+      a {
+        color: red;
       }
     `}</style>
   </>

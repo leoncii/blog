@@ -1,5 +1,4 @@
 import { BlogPost } from '../../../containers/BlogPost'
-import Highlight, { defaultProps } from "prism-react-renderer"
 import { HighlightCodeBlock } from '../../../utilities/HighlightCodeBlock.js'
 import { Comments } from '../../../containers/Comments'
 import img from '../../../public/Portal.jpg'
@@ -59,20 +58,16 @@ export default function React_Portal({ children }) {
   }
 
   Veremos como crear un portal de react de manera sencilla y practica para ponerlo desde ya en use().
-
   ...Existen dos posibilidades de tener nuestro elemento que:
 
  -👀 El elemento ya existe DOM.
  -🎈 El elemento no existe y necesita ser creado.
 
-  
   ## Vamos al codigo
 
   ![alt text](https://homepages.cae.wisc.edu/~ece533/images/arctichare.png)
 
-
 <HighlightCodeBlock block={b1} />
-
 
 - Crear un portal en el DOM con un identificador **id** ya enlazado 🎗 en el arbol del DOM.
 - Crea un portal 🙌 en un nuevo elemento del DOM que ya esta identificado por el **id** y cuando no hay elementos en el arbol del DOM usa el **id** existente.
@@ -80,12 +75,9 @@ export default function React_Portal({ children }) {
 
   ## Inspeccionando el codigo
 
-
-  
 <HighlightCodeBlock block={b2}/>
 
   En cada render que leemos 🎨 del DOM para coger el elemento por el **id**. En caso que no exista creamos un div vacío.
-
 
 <HighlightCodeBlock block={b3} />
 
@@ -93,6 +85,6 @@ export default function React_Portal({ children }) {
 
   Usaremos un estado que no cambia en el transcurso de vida del componente 🔮 sin embargo es necesario saber cuando vamos a destruir ese componente.
 
-  <HighlightCodeBlock block={b4} />
+<HighlightCodeBlock block={b4} />
 
   Cada vez que suceda un cambio en el estado de nuestro **id** vamos a actualizar nuestra referencia del **element** a un elemento 🎢 dinamico.

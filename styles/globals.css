@@ -1,10 +1,13 @@
 #__next {
   --light: #f1a832;
+  --light-0: #c08423;
+  
   --dark: #1d1d1d;
   --blue: #2e2cda;
   --dark-violet: #8c2364;
   --light-violet: hsl(323, 100%, 54%);
   --bg: #f2f2ef;
+  --green: #84edc1;
   --bg-0:#959287;
   --brown: #c49d75;
   --breakpoint-m: 768px;
@@ -23,8 +26,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -65,8 +66,23 @@ h2 {
   line-height: 1.4;
   margin: 0 auto;
 }
+h3 {
+  color: var(--copilot-dark);
+  text-align: center;
+  font-size: calc(24px + ((3000vw - 900px) / (1300)));
+  font-weight: bolder;
+  min-width: 170px;
+  max-width: 600px;
+  line-height: .9;
+  margin: 0 auto;
+}
+h4 {
+  color: var(--light-0);
+  line-height: 1.1;
+  font-size: calc(70% + ((3000vw - 900px) / (1300)));
+}
 p {
-  font-size: 1.13rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   letter-spacing: 0.125px;
   font-weight: 400;
@@ -74,16 +90,15 @@ p {
 
 .page-scroll-indicator {
   width: 100%;
-  height: 5px;
   position: fixed;
   top: 49px;
+  z-index: 1001;
 }
 
 .progress {
   width: 0%;
   height: 5px;
   background-image: linear-gradient(to bottom right,#4e85b6,#4b9b79,rgb(121,192,255));
-  z-index: 9999;
 }
 
 small {
@@ -95,4 +110,31 @@ small {
 pre code {
   color: whitesmoke !important;
   background-color: #101010 !important;
+}
+
+#portal {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 54px;
+  width: 325px;
+  height: 45px;
+  background-color: #ffe2e2;
+  right: 0;
+  color: #1b1f24;
+  z-index: 144;
+  text-align: center;
+}
+
+.avatar {
+  width: 32px;
+  border-radius: 50%;
+}
+
+
+@media only screen and (max-width: 468px ){
+  blockquote {
+    margin: 16px;
+  }
+
 }

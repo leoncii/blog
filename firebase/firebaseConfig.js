@@ -1,7 +1,8 @@
+
 export const firebaseConfig = {
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID
+  apiKey: "AIzaSyD5Ob1MP05BdVwk0ButjtYRPffG8YB_BIw",
+  authDomain: "blog-697de.firebaseapp.com",
+  projectId: "blog-697de",
+  storageBucket: "blog-697de.appspot.com",
+  appId: "1:166230947785:web:c8e3e2e49ac0f00c339a18"
 }

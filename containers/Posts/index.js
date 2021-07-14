@@ -17,10 +17,8 @@ export function Posts() {
   const filteredPostsWithMemo = useMemo(() => {
     return posts.filter((post) => {
       const {
-        link,
         module: { meta: { title } }
       } = post
-      console.log("[LINK;title]",link, title)
       const string = normalizeTitle(title)
       return string.toLowerCase().includes(search.toLowerCase())
     })
