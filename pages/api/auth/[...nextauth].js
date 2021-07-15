@@ -69,7 +69,7 @@ const options = {
     signIn: '/signin',
   },
   callbacks: {
-    signIn(user, account, profile) {
+    async signIn(user, account, profile) {
       if (!profile.verified_email) {
         return false
       }
