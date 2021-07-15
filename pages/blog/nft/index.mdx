@@ -1,16 +1,21 @@
 import { BlogPost } from '../../../containers/BlogPost'
-import img from '../../../public/nft.jpg'
 
 export const meta = {
   title: '¿Qué son los NFTs?',
   description: 'Aprenderas como funcionan los NFT y las Blockchain',
   date: 'jul 03, 2021',
   readTime: 4,
-  imgUrl: img
+  imgUrl: "https://res.cloudinary.com/djc1umong/image/upload/v1626376679/nft_hagcam.jpg"
+}
+
+export const seo = {
+  name: "robots",
+  content: "nofollow",
+  title: "Todo lo que necesitas saber de los nft en 10 minutos"
 }
 
 export default function NFTs({children}) {
-  return <BlogPost meta={meta}>{children}</BlogPost>
+  return <BlogPost seo={seo} meta={meta}>{children}</BlogPost>
 }
 
 Empecemos por desglosar esta nueva moda de los NFT 👛 que se habla ahora,

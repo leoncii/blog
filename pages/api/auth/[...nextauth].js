@@ -1,13 +1,13 @@
+import fs from 'fs'
+import path from 'path'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import firebase from 'firebase/app'
+import { firebaseConfig } from '../../../firebase/firebaseConfig'
 import { FirebaseAdapter } from '@next-auth/firebase-adapter'
 import nodemailer from 'nodemailer'
-import { text, html } from '../../../email'
-import firebase from 'firebase/app'
 import 'firebase/firestore'
-import { firebaseConfig } from '../../../firebase/firebaseConfig'
-import path from 'path'
-import fs from 'fs'
+import { text, html } from '../../../email'
 
 const firestore = (
   firebase.apps[0] ?? firebase.initializeApp(firebaseConfig)
@@ -69,7 +69,7 @@ const options = {
     signIn: '/signin',
   },
   callbacks: {
-    async signIn(user, account, profile) {
+    signIn(user, account, profile) {
       if (!profile.verified_email) {
         return false
       }

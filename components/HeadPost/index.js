@@ -2,27 +2,27 @@ import Image from 'next/image'
 
 export const HeadPost = (props) => {
   const { meta, isActive } = props
-
+  const { imgUrl, title, description, readTime, date } = meta
   return (
     <>
       <header>
         <picture>
           <img
-            src={meta?.imgUrl.src}
+            src={imgUrl}
             width={50}
             height={50}
-            alt={meta.title}
+            alt={title}
           />
         </picture>
         <div>
-          <h1>{meta.title}</h1>
+          <h1>{title}</h1>
         </div>
         <div>
-          <p>{meta.description}</p>
+          <p>{description}</p>
           <span role='img' aria-label='one coffee'>
-            ☕ {meta.readTime + ' min read'}
+            ☕ {readTime + ' min read'}
           </span>
-          <span>{meta.date}</span>
+          <span>{date}</span>
         </div>
       </header>
       <style jsx>

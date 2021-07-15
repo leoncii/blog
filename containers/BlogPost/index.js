@@ -2,11 +2,17 @@ import { Comments } from '../Comments'
 import { HeadPost } from '../../components/HeadPost/'
 import { ShareBar } from '../ShareBar'
 import { Footer } from '../../components/Footer'
+import Head from 'next/head'
 
-export function BlogPost({ children, meta }) {
+export function BlogPost({ children, meta, seo }) {
   const { isActive } = meta
+  const { name, title, content } = seo
   return (
     <>
+      <Head>
+        <meta name={name} content={content} />
+        <title>{title}</title>
+      </Head>
       <div>
         <HeadPost isActive meta={meta} />
         <article>{children}</article>

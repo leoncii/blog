@@ -2,9 +2,17 @@ import { providers, signIn, getSession, csrfToken } from "next-auth/client"
 import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer'
 import { Message } from '../../components/svgs/message'
+import Head from 'next/head'
 
 export default function Signin({ providers, csrfToken }) {
   return <>
+    <Head>
+      <meta name="robots" content="" />
+      <title>Iniciar sessión en Pim Pum Pam - Blog</title>
+      <meta name="robots" content="index" />
+      <meta name="description" content="Blog actualizado en castellano de javascript, NFT, Blockchain para la gente nueva" />
+
+    </Head>
     <section>
       <h3>Iniciar sessión en blog</h3>
       <form method="post" action="/api/auth/signin/email">

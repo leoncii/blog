@@ -1,7 +1,6 @@
 import { BlogPost } from '../../../containers/BlogPost'
 import { HighlightCodeBlock } from '../../../utilities/HighlightCodeBlock.js'
 import { Comments } from '../../../containers/Comments'
-import img from '../../../public/Portal.jpg'
 const b1 = `
 import { memo, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -49,12 +48,18 @@ export const meta = {
   description: 'Sabes como hacer portales en react ? 👀 solo ve este post y listo',
   date: 'Jun 04, 2021',
   readTime: 4,
-  imgUrl: img,
+  imgUrl: "https://res.cloudinary.com/djc1umong/image/upload/v1626378149/Portal_x82uo2.jpg",
   isActive: true
 }
 
+export const seo = {
+  name: "robots",
+  content: "nofollow",
+  title: "Como crear un portal de reactjs o modal simple y funcional."
+}
+
 export default function React_Portal({ children }) {
-  return <BlogPost meta={meta}>{children}</BlogPost>
+  return <BlogPost seo={seo} meta={meta}>{children}</BlogPost>
   }
 
   Veremos como crear un portal de react de manera sencilla y practica para ponerlo desde ya en use().
