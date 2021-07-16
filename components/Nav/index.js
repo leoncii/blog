@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Leonardo from '../../svg/navbar/leonardoRed'
+import Leonardo from '../../svg/navbar/leonardo'
 import Portal from '../../portal'
 import { Button } from '../../components/Button'
 import { useRouter } from 'next/router'

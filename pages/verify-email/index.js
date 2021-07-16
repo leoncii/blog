@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/client'
 import { Button } from '../../components/Button'
-import Leonardo from '../../svg/navbar/leonardoRed'
 
 export default function VerifyEmail() {
 
