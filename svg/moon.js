@@ -153,13 +153,16 @@ export default function Moon(props) {
         div {
           top: 42%;
           height: 100%;
-          z-index: 99;
         }
+        .shading {
+          height: 340px;
+          position: initial;
+        }
+      }
       @media only screen and (min-width: 468px) {
         div {
           top: 7%;
         }
-      }
       }
 
     `}</style>

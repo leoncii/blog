@@ -29,8 +29,7 @@ export default function VerifyEmail() {
 
 
 export async function getServerSideProps(ctx) {
-  const { req, res } = ctx
-  console.log(res);
+  const { req } = ctx
   const session = await getSession({ req })
 
   if (session?.user && res) {

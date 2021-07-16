@@ -1,6 +1,5 @@
 import { Main } from '../components/Main'
 import { Posts } from '../containers/Posts'
-import { Footer } from '../components/Footer'
 import Head from 'next/head'
 
 export default function Home({ props }) {
@@ -14,3 +13,4 @@ export default function Home({ props }) {
     <Posts />
   </>
 }
+

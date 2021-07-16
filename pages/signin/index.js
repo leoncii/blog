@@ -1,6 +1,5 @@
 import { providers, signIn, getSession, csrfToken } from "next-auth/client"
 import { Button } from '../../components/Button'
-import { Footer } from '../../components/Footer'
 import { Message } from '../../components/svgs/message'
 import Head from 'next/head'
 

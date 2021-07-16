@@ -1,7 +1,6 @@
 import { Comments } from '../Comments'
 import { HeadPost } from '../../components/HeadPost/'
 import { ShareBar } from '../ShareBar'
-import { Footer } from '../../components/Footer'
 import Head from 'next/head'
 
 export function BlogPost({ children, meta, seo }) {
@@ -19,7 +18,6 @@ export function BlogPost({ children, meta, seo }) {
         <Comments />
       </div>
       <ShareBar />
-      <Footer />
       <style jsx>{`
         div {
           padding-top: ${isActive ? '49px' : '0px'};

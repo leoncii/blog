@@ -4,13 +4,14 @@ import { useRouter } from 'next/router'
 export function Footer() {
   const { route } = useRouter()
 
+  console.log(route);
   return <>
     <section>
       <small>Leonardo Torrico Becerra</small>
     </section>
     <style jsx>{`
     section {
-     height: ${route === '/' ? '100vh' : "22px"};
+     height: ${route === '/' ? '100vh' : "200px"};
      background: linear-gradient(217deg, #1a1414cc, #141111cc 70.71%),
             linear-gradient(127deg, #141414cc, #141414cc 70.71%),
             linear-gradient(336deg, #000000cc, #180404cc 70.71%);

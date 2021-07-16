@@ -46,17 +46,19 @@ const options = {
     async signIn(user, account, profile) {
       if (account.type === 'email') {
         if (user.emailVerified || profile.verificationRequest) {
+          console.log('EMAIL');
           return true
         }
       }
       if (!profile.verified_email) {
-        console.log("USER", user);
-        console.log('------------')
-        console.log("account ", account);
-        console.log('------------')
-        console.log("profile", profile);
-        console.log('------------')
-        return "/error"
+        // console.log("USER", user);
+        // console.log('------------')
+        // console.log("account ", account);
+        console.error('[ERRRRRRRRRRRRRRRRROR]')
+        // console.log('------------')
+        // console.log("profile", profile);
+        // console.log('------------')
+        return false
       }
       if (account.provider === 'google' &&
         profile.verificationRequest == true) {
@@ -65,9 +67,10 @@ const options = {
         console.log('GOOGLE')
         console.log('GOOGLE')
         console.log('GOOGLE')
-        return "/"
+        return true
       } else {
-        return '/'
+        console.log('ELSE')
+        return true
       }
     },
     async session(session, token) {

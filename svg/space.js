@@ -9,7 +9,7 @@ export const Space = () => {
         layout="intrinsic"
         alt='Mirando al espacio sideral sobre un campo verde y un fondo mágico'
         />
-      <style jsxglobal>{`
+      <style jsx global>{`
         @media only screen and (max-width: 787px) {
           .space {
             min-width: -webkit-fill-available;
