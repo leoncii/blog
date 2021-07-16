@@ -58,7 +58,7 @@ const options = {
         // console.log('------------')
         // console.log("profile", profile);
         // console.log('------------')
-        return false
+        return "/signin"
       }
       if (account.provider === 'google' &&
         profile.verificationRequest == true) {
