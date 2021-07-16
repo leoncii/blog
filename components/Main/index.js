@@ -11,7 +11,7 @@ export function Main() {
           <section>
             <h1>Blog T-Leo</h1>
             <p>
-              Pin sen pum ci pan llo
+              Pim sen pum ci pam llo
             </p>
           </section>
         </div>
