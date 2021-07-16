@@ -19,57 +19,63 @@ export function Main() {
       <Space />
     </div>
     <style jsx>{`
-    .container {
-      display: flex;
-      height: 70vh;
-      width: 100%;
-      justify-content: space-around;
-      text-align: center;
-      background-color: var(--bg);
-    }
-    main {
-      height: inherit;
-      width: 100%;
-      z-index: 1;
-    }
-    .hero {
-      padding-top: 138px;
-      display: flex;
-      width: 100%;
-      align-items: space-between;
-      flex-direction: column;
-      height: inherit;
-    }
-    section {
-      padding: 1% 6% 0;
-    }
-    .arrows {
-      width: 50px;
-      height: 50px;
-      background-color: #222;
-    }
+    div {
+        display: flex;
+        height: 70vh;
+        width: 100%;
+        padding-top: 48px;
+        justify-content: space-around;
+        text-align: center;
+        background-color: var(--bg);
+      }
+      .hero {
+        height: fit-content;
+        background: transparent;
+      }
+      main {
+        height: inherit;
+        width: 100%;
+        z-index: 1;
+        position: absolute;
+      }
+      section {
+        padding: 1% 6% 0;
+      }
+      .arrows {
+        width: 50px;
+        height: 50px;
+        background-color: #222;
+      }
 
-    h1 {
-      color: var(--copilot-dark);
-      display: block;
-      place-content: center;
-      font-weight: 800;
-      text-shadow: 0 -2px 1px var(--green);
-    }
+      h1 {
+        color: var(--copilot-dark);
+        display: block;
+        place-content: center;
+        font-weight: 800;
+        text-shadow: 0 -2px 1px var(--green);
+      }
 
-    p {
-      color: var(--copilot-dark);
-      font-weight: 600;
-      text-shadow: 0 0px 5px var(--copilot-white);
-    }
+      p {
+        color: var(--copilot-dark);
+        font-weight: 600;
+        text-shadow: 0 0px 5px var(--copilot-white);
+      }
 
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 787px) {
         .hero {
           text-align-last: start;
+          padding-right: 15%;
+          background: transparent;
         }
         .container {
-          height: 90vh;
+          height: 77vh;
         }
+        main {
+          position: static;
+        }
+        {/* .container:nth(2) {
+          height: 77vh;
+        } */}
     }
   `}</style>
   </>

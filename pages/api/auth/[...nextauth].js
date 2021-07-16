@@ -40,20 +40,16 @@ const options = {
   pages: {
     signIn: '/signin',
     verifyRequest: '/verify-email',
-    // error: 'autherror',
-
+    error: '/error',
   },
   callbacks: {
     async signIn(user, account, profile) {
-      console.log('object')
-
       if (account.type === 'email') {
         if (user.emailVerified || profile.verificationRequest) {
           return true
         }
       }
-
-      if (!profile.verificationRequest) {
+      if (!profile.verified_email) {
         console.log("USER", user);
         console.log('------------')
         console.log("account ", account);
@@ -71,18 +67,15 @@ const options = {
         console.log('GOOGLE')
         return "/"
       } else {
-        return true
+        return '/'
       }
     },
     async session(session, token) {
       console.log("SESSION", session)
       console.log("TOKEN", token)
-      console.log('SESSSION')
       return session
     },
     async redirect(url, baseUrl) {
-      console.log("URL: ", url);
-      console.log("baseURL: ", baseUrl);
       return baseUrl
     },
   }
