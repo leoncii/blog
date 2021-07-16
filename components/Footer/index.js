@@ -1,11 +1,8 @@
-import Whatsapp from '../../svg/footer/whatsapp'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-export function Footer({ height }) {
-
-  const whatsAppNumber = '59174361042'
-  const textUrl = 'Hola%20leo...'
-  const sendMsg = `https://wa.me/${whatsAppNumber}?text=${textUrl}`
+export function Footer() {
+  const { route } = useRouter()
 
   return <>
     <section>
@@ -13,7 +10,7 @@ export function Footer({ height }) {
     </section>
     <style jsx>{`
     section {
-     height: ${!height ? '100vh' : height};
+     height: ${route === '/' ? '100vh' : "22px"};
      background: linear-gradient(217deg, #1a1414cc, #141111cc 70.71%),
             linear-gradient(127deg, #141414cc, #141414cc 70.71%),
             linear-gradient(336deg, #000000cc, #180404cc 70.71%);

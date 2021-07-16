@@ -1,13 +1,11 @@
-import fs from 'fs'
-import path from 'path'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import firebase from 'firebase/app'
 import { firebaseConfig } from '../../../firebase/firebaseConfig'
 import { FirebaseAdapter } from '@next-auth/firebase-adapter'
-import nodemailer from 'nodemailer'
 import 'firebase/firestore'
-import { text, html } from '../../../email'
+import { SendVerificationEmail } from '../../../email/sendVerification'
+import { session } from 'next-auth/client'
 
 const firestore = (
   firebase.apps[0] ?? firebase.initializeApp(firebaseConfig)
@@ -30,33 +28,7 @@ const options = {
         }
       },
       from: process.env.EMAIL_FROM,
-      sendVerificationRequest: (data) => {
-        const { identifier: email, url, token, baseUrl, provider } = data
-        const { from, server } = provider
-        const site = baseUrl.replace(/^https?:\/\//, "")
-        const file = path.resolve(process.cwd() + '/public/leonardo.png')
-
-        const base64file = fs.readFileSync(file, 'base64')
-        return new Promise((resolve, reject) => {
-          nodemailer.createTransport(server).sendMail(
-            {
-              to: email,
-              from: from,
-              subject: `Gracias pro registrarte ${site}`,
-              text: text({ url, site }),
-              html: html({ url, site, email, base64file }),
-              attachDataUrls: true,
-            },
-            (error) => {
-              if (error) {
-                console.error("SEND_VERIFICATION_EMAIL_ERROR", email, error)
-                return reject(new Error("SEND_VERIFICATION_EMAIL_ERROR", error))
-              }
-              return resolve()
-            }
-          )
-        })
-      }
+      sendVerificationRequest: (data) => SendVerificationEmail(data)
     })
   ],
   adapter: FirebaseAdapter(firestore),
@@ -67,19 +39,52 @@ const options = {
   },
   pages: {
     signIn: '/signin',
+    verifyRequest: '/verify-email',
+    // error: 'autherror',
+
   },
   callbacks: {
     async signIn(user, account, profile) {
-      if (!profile.verified_email) {
-        return false
+      console.log('object')
+
+      if (account.type === 'email') {
+        if (user.emailVerified || profile.verificationRequest) {
+          return true
+        }
+      }
+
+      if (!profile.verificationRequest) {
+        console.log("USER", user);
+        console.log('------------')
+        console.log("account ", account);
+        console.log('------------')
+        console.log("profile", profile);
+        console.log('------------')
+        return "/error"
       }
       if (account.provider === 'google' &&
-        profile.verified_email == true) {
-        return true
+        profile.verificationRequest == true) {
+        console.log('GOOGLE')
+        console.log('GOOGLE')
+        console.log('GOOGLE')
+        console.log('GOOGLE')
+        console.log('GOOGLE')
+        return "/"
       } else {
         return true
       }
-    }
+    },
+    async session(session, token) {
+      console.log("SESSION", session)
+      console.log("TOKEN", token)
+      console.log('SESSSION')
+      return session
+    },
+    async redirect(url, baseUrl) {
+      console.log("URL: ", url);
+      console.log("baseURL: ", baseUrl);
+      return baseUrl
+    },
   }
 }
 

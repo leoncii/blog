@@ -10,7 +10,7 @@ export default function Signin({ providers, csrfToken }) {
       <meta name="robots" content="" />
       <title>Iniciar sessión en Pim Pum Pam - Blog</title>
       <meta name="robots" content="index" />
-      <meta name="description" content="Blog actualizado en castellano de javascript, NFT, Blockchain para la gente nueva" />
+      <meta name="description" content="Blog actualizado de javascript, NFT, Blockchain para la gente nueva" />
 
     </Head>
     <section>
@@ -54,9 +54,6 @@ export default function Signin({ providers, csrfToken }) {
         }
       </form>
     </section>
-    <Footer
-      height="20px"
-    />
     <style jsx>{`
       section {
         display: flex;

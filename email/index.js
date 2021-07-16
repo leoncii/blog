@@ -16,7 +16,7 @@ export const html = ({ url, site, email, base64file = '' }) => {
   const buttonBorderColor = "#cfcfcf"
   const buttonTextColor = "#1b1f24"
 
-  // Uses tables for layout and inline CSS due to email client limitations
+  console.log("EMAILLllllllllllllll",url);
   return `
 <body style="background: ${backgroundColor};">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">

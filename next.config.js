@@ -14,15 +14,6 @@ const nextConfig = {
     locales: ['es', 'eu'],
     defaultLocale: 'es'
   },
-  async redirect() {
-    return [
-      {
-        source: 'https://blog-3cu5waq9j-leoncii.vercel.app/api/*',
-        destinatiom: "https://simple-pimpumpam.com/",
-        permanent: true
-      }
-    ]
-  },
   eslint: {
     ignoreDuringBuilds: true,
     dirs: ['pages', 'components', 'containers', 'firebase']
