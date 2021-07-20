@@ -8,9 +8,9 @@ export const Space = () => {
         className="space"
         layout="intrinsic"
         alt='Mirando al espacio sideral sobre un campo verde y un fondo mágico'
-        />
+      />
       <style jsx global>{`
-        @media only screen and (max-width: 787px) {
+        @media only screen and (min-width: 787px) {
           .space {
             min-width: -webkit-fill-available;
           }
@@ -18,8 +18,3 @@ export const Space = () => {
       `}</style>
   </>
 }
-
-
-
-
-// layot == fill responsive

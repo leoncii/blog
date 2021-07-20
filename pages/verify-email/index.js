@@ -17,6 +17,10 @@ export default function VerifyEmail() {
         width: 100%;
         justify-items: center;
       }
+      p {
+        width: 320px;
+        max-width: 500px;
+      }
       @media only screen and (max-width: 468px) {
         div {
           padding: 0 2rem;

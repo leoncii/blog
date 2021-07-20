@@ -39,8 +39,7 @@ const options = {
   },
   pages: {
     signIn: '/signin',
-    verifyRequest: '/verify-email',
-    error: '/error',
+    verifyRequest: '/verify-email'
   },
   callbacks: {
     async signIn(user, account, profile) {
