@@ -1,7 +1,7 @@
 import Banner from '../../svg/banner'
 import Moon from '../../svg/moon'
 import { Space } from '../../svg/space'
-import { HeroText } from '../../components/heroText'
+import { HeroText } from '../../components/HeroText'
 
 export function Main() {
   return <>

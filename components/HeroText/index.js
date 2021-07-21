@@ -1,6 +1,4 @@
-
 export function HeroText() {
-
   return <>
         <div>
             <h1>Blog T-Leo</h1>
