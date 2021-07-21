@@ -45,26 +45,16 @@ const options = {
     async signIn(user, account, profile) {
       if (account.type === 'email') {
         if (user.emailVerified || profile.verificationRequest) {
-          console.log('EMAIL');
+          console.log('EMAIL')
           return true
         }
       }
       if (!profile.verified_email) {
-        // console.log("USER", user);
-        // console.log('------------')
-        // console.log("account ", account);
         console.error('[ERRRRRRRRRRRRRRRRROR]')
-        // console.log('------------')
-        // console.log("profile", profile);
-        // console.log('------------')
         return "/signin"
       }
       if (account.provider === 'google' &&
-        profile.verificationRequest == true) {
-        console.log('GOOGLE')
-        console.log('GOOGLE')
-        console.log('GOOGLE')
-        console.log('GOOGLE')
+      profile.verificationRequest == true) {
         console.log('GOOGLE')
         return true
       } else {

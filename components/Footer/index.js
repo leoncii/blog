@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 export function Footer() {
   const { route } = useRouter()
 
-  console.log(route);
   return <>
     <section>
       <small>Leonardo Torrico Becerra</small>

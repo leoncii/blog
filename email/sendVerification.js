@@ -6,6 +6,7 @@ import { text, html } from '../email'
 
 export const SendVerificationEmail = data => {
 
+  console.log(data)
   const { identifier: email, url, token, baseUrl, provider } = data
   const { from, server } = provider
   const site = baseUrl.replace(/^https?:\/\//, "")
