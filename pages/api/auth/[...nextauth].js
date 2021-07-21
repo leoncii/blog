@@ -70,6 +70,9 @@ const options = {
     async redirect(url, baseUrl) {
       return baseUrl
     },
+    async error(e,q,s) {
+      console.log(e,q,s)
+    }
   }
 }
 

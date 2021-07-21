@@ -14,7 +14,7 @@ export default function Signin({ providers, csrfToken }) {
     </Head>
     <section>
       <h3>Iniciar sessión en blog</h3>
-      <form method="post" action="https://simple-pimpumpam.com/api/auth/signin/email">
+      <form method="post" action="/api/auth/signin/email">
         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label>
           <Message />

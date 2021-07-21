@@ -6,6 +6,7 @@ export const html = ({ url, site, email, base64file = '' }) => {
   const escapedEmail = `${email.replace(/\./g, "&#8203;.")}`
   const escapedSite = `${site.replace(/\./g, "&#1b1f24;.")}`
 
+  console.log('[ESCAPEDSITE]', site)
   const backgroundColor = "#f2f2f2";
   // const backgroundColor = "#f2f2ef";
   const styleBody= "background: rgb(33,62,48);background: linear-gradient(90deg, rgba(33,62,48,1) 0%, rgba(40,57,77,1) 50%, rgba(98,54,91,1) 100%);"

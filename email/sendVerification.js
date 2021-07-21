@@ -3,13 +3,11 @@ import path from 'path'
 import nodemailer from 'nodemailer'
 import { text, html } from '../email'
 
-
 export const SendVerificationEmail = data => {
-
-  console.log(data)
   const { identifier: email, url, token, baseUrl, provider } = data
   const { from, server } = provider
-  const site = baseUrl.replace(/^https?:\/\//, "")
+  // const site = baseUrl.replace(/^https?:\/\//, "")
+  const site = 'simple-pimpumpam.com'
   // const file = path.resolve(process.cwd() + '/public/leo.jpg')
   // const base64file = fs.readFileSync(file, 'base64')
   return new Promise((resolve, reject) => {
@@ -19,9 +17,7 @@ export const SendVerificationEmail = data => {
         from: from,
         subject: `Te registraste a ${site} 💌`,
         text: text({ url, site }),
-        html: html({ url, site, email, base64file:'' }),
-        date:new Date(),
-        attachDataUrls: false,
+        html: html({ url, site, email, base64file:'' })
       },
       (error) => {
         if (error) {
