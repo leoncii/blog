@@ -6,16 +6,14 @@ import Head from 'next/head'
 export default function Signin({ providers, csrfToken }) {
   return <>
     <Head>
-      <meta name="robots" content="" />
       <title>Iniciar sessión en Pim Pum Pam - Blog</title>
       <meta name="robots" content="index" />
       <meta name="description" content="Blog actualizado de javascript, NFT, Blockchain para la gente nueva" />
-
     </Head>
     <section>
       <h3>Iniciar sessión en blog</h3>
-      <form method="post" action="/api/auth/signin/email">
-        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+     <form method="post" action="/api/auth/signin/email">
+       {/* <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label>
           <Message />
           <input
@@ -25,9 +23,9 @@ export default function Signin({ providers, csrfToken }) {
             placeholder='Email address'
           />
         </label>
-        <button type='submit' >Login with email</button>
+        <button type='submit' >Login with email</button> */}
         {
-          Object.values(providers).map((provider) => {
+          Object.values(providers).map(provider => {
             if (provider.name === "Email") {
               return;
             }
@@ -148,7 +146,6 @@ export async function getServerSideProps(ctx) {
     res.end()
     return { props: {} };
   }
-
   return {
     props: {
       session: null,

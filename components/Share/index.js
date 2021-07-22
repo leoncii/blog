@@ -1,14 +1,21 @@
+import { useContext } from 'react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import { Heart } from '../../svg/heart'
 import { HeartLiked } from '../../svg/heartLiked'
+import { Context } from '../../context/userProvider'
+import { Loading } from 'svg/loading'
 
 export function Share({ onClick, likes, setUrlFirebase, verify, session }) {
-
+  const { loading } = useContext(Context)
   return <>
     <section>
       <div className='bonico'>
         <div className='likes' onClick={onClick}>
-          <span> {!session ? <Heart /> : <HeartLiked />} </span>
+          {
+            loading
+              ? <Loading />
+              : <span> {!session ? <Heart /> : <HeartLiked />} </span>
+          }
           <span>{likes}</span>
           {!session ? <small>signin</small> : ''}
         </div>

@@ -5,7 +5,6 @@ import { postLikesFromWhichPost, getLikesCount, getLikesFromPost, getLikesFromUs
 import { Share } from '../../components/Share'
 import { Context } from '../../context/userProvider'
 
-
 export function ShareBar() {
   const { session } = useContext(Context)
   const router = useRouter()
@@ -23,16 +22,10 @@ export function ShareBar() {
     return;
   }
 
-  const handleUserLikes = () => {
-
-  }
-
   useEffect(() => {
     setUrlFirebase && getLikesFromPost(setUrlFirebase)
       .then(res => setLikes(res))
   }, [setUrlFirebase])
-
-
 
   return <>
     <Share

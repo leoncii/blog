@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { HeadPost } from "../HeadPost"
+import Link from 'next/link'
+import { HeadPost } from '../HeadPost'
 
 export const Post = ({ post }) => {
   const {

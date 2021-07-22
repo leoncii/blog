@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Leonardo from '../../svg/navbar/leonardo'
 import Portal from '../../portal'
 import { Button } from '../../components/Button'
 import { useRouter } from 'next/router'
+import { Context } from '../../context/userProvider'
+import { Loading } from '../../svg/loading'
 
 export function Nav({ signOut, signIn, session }) {
   const [modal, setModal] = useState(false)
+  const { loading } = useContext(Context)
   const router = useRouter()
   const handleLogout = () => {
     signOut()
@@ -25,6 +28,9 @@ export function Nav({ signOut, signIn, session }) {
           ? <>
             <div>
               <picture onClick={() => setModal(!modal)}>
+                {
+                  loading && <Loading />
+                }
                 <Image
                   className='avatar'
                   width={32}

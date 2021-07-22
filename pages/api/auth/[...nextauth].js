@@ -1,11 +1,13 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
-import firebase from 'firebase/app'
-import { firebaseConfig } from '../../../firebase/firebaseConfig'
 import { FirebaseAdapter } from '@next-auth/firebase-adapter'
+import { firebaseConfig } from '../../../firebase/firebaseConfig'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { SendVerificationEmail } from '../../../email/sendVerification'
-import { session } from 'next-auth/client'
+
+console.log(process.env.EMAIL_SERVER_HOST)
+
 
 const firestore = (
   firebase.apps[0] ?? firebase.initializeApp(firebaseConfig)
@@ -28,7 +30,7 @@ const options = {
         }
       },
       from: process.env.EMAIL_FROM,
-      sendVerificationRequest: (data) => SendVerificationEmail(data)
+      sendVerificationRequest: (data) => SendVerificationEmail(data),
     })
   ],
   adapter: FirebaseAdapter(firestore),
@@ -50,11 +52,11 @@ const options = {
         }
       }
       if (!profile.verified_email) {
-        console.error('[ERRRRRRRRRRRRRRRRROR]')
+        console.error('[ - EMAIL - ]]')
         return "/signin"
       }
       if (account.provider === 'google' &&
-      profile.verificationRequest == true) {
+        profile.verificationRequest == true) {
         console.log('GOOGLE')
         return true
       } else {
@@ -69,9 +71,6 @@ const options = {
     },
     async redirect(url, baseUrl) {
       return baseUrl
-    },
-    async error(e,q,s) {
-      console.log(e,q,s)
     }
   }
 }
