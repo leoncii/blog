@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'next/router'
 import { Button } from '../../components/Button'
 import Link from 'next/link'
+import { Loading } from 'svg/loading'
 
 export function Comments() {
   const { session, loading, signIn } = useContext(Context)
@@ -25,7 +26,6 @@ export function Comments() {
       .then(res => {
         setComments(res)
       })
-      .catch(e => e && new Error('Vaya parece que algo salio mal'))
   }
 
   const handleLoginWithGoogle = () => signIn('google')
@@ -51,7 +51,7 @@ export function Comments() {
           />
         }
         {
-          comments.length <= 0 && <div> Loading...</div>
+          comments.length <= 0 && <Loading> Loading...</Loading>
         }
         {
           comments.map(({ id, name, img, p, date }) => <Comment
@@ -62,9 +62,7 @@ export function Comments() {
             date={date}
           />)
         }
-        {
-          comments.length <= 3 && <Button onClick={handleGetMoreComments}>Ver más</Button>
-        }
+        <Button modal={true} onClick={handleGetMoreComments}>Ver más</Button>
       </div>
     </section>
     <style jsx>{`
@@ -81,9 +79,6 @@ export function Comments() {
         font-weight: 800;
         margin: 2rem 0;
         padding-bottom: 2rem;
-      }
-      a {
-        color: red;
       }
     `}</style>
   </>

@@ -1,7 +1,8 @@
 import firebase from '../firebase'
 import { increment } from '../firebase'
 
-export const db = firebase.firestore()
+const db = firebase.firestore()
+
 const mapCommentFromFirebaseToObject = (doc) => {
   const data = doc.data()
   const { date: { seconds }, img, name } = data
@@ -41,8 +42,8 @@ export async function getMoreUrlComments({ urlPost }) {
 
 export function listenLatestComments({ setComments: callback, urlPost }) {
   return db.collection(urlPost)
-    .limit(3)
     .orderBy('date', 'desc')
+    .limit(3)
     .onSnapshot(({ docs }) => {
       const newComments = docs.map(mapCommentFromFirebaseToObject)
       callback(newComments)
