@@ -177,6 +177,6 @@ export default function Tarjeta_de_credito(props) {
         width: 100%;
       }
     `}</style>
-    </>
+  </>
   )
 }

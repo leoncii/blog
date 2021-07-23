@@ -4,14 +4,14 @@ import { Chips } from '../../components/Chips'
 import { FilteredPosts } from '../../components/FilteredPosts'
 import { posts } from '../../getAllPosts'
 
-export function Posts() {
+export function Posts () {
   const [search, setSearch] = useState('')
 
   const handleSearch = e => {
     setSearch(e.target.value)
   }
   const normalizeTitle = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   }
 
   const filteredPostsWithMemo = useMemo(() => {
@@ -24,20 +24,22 @@ export function Posts() {
     })
   }, [search])
 
-  return <>
-    <div>
-      <Chips />
-      <Search
-        onChange={handleSearch}
-        value={search}
-      />
-      <FilteredPosts
-        search={search}
-        filteredPostsWithMemo={filteredPostsWithMemo}
-      />
-    </div>
-    <style jsx>{`
+  return (
+    <>
+      <div>
+        <Chips />
+        <Search
+          onChange={handleSearch}
+          value={search}
+        />
+        <FilteredPosts
+          search={search}
+          filteredPostsWithMemo={filteredPostsWithMemo}
+        />
+      </div>
+      <style jsx>{`
       div {
+        width: 100%;
         text-align: center;
         padding: 0 10px;
       }
@@ -64,6 +66,8 @@ export function Posts() {
           padding: 1.8rem 0;
         }
       }
-    `}</style>
-  </>
+    `}
+      </style>
+    </>
+  )
 }

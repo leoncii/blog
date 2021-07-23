@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef, useContext } from 'react'
-import ScoreStar from '../../svg/ScoreStar'
+import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { postLikesFromWhichPost, getLikesCount, getLikesFromPost, getLikesFromUserId } from '../../firebase/db'
+import { postLikesFromWhichPost, getLikesFromPost } from '../../firebase/db'
 import { Share } from '../../components/Share'
 import { Context } from '../../context/userProvider'
 
-export function ShareBar() {
+export function ShareBar () {
   const { session } = useContext(Context)
   const router = useRouter()
   const [likes, setLikes] = useState(null)
@@ -19,7 +18,6 @@ export function ShareBar() {
         .then(() => getLikesFromPost(setUrlFirebase)
           .then(setLikes))
     }
-    return;
   }
 
   useEffect(() => {
@@ -27,12 +25,14 @@ export function ShareBar() {
       .then(res => setLikes(res))
   }, [setUrlFirebase])
 
-  return <>
-    <Share
-      likes={likes}
-      session={session}
-      onClick={handleLikes}
-      setUrlFirebase
-    />
-  </>
+  return (
+    <>
+      <Share
+        likes={likes}
+        session={session}
+        onClick={handleLikes}
+        setUrlFirebase
+      />
+    </>
+  )
 }

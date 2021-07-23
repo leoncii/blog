@@ -3,7 +3,7 @@ import { HeadPost } from '../../components/HeadPost/'
 import { ShareBar } from '../ShareBar'
 import Head from 'next/head'
 
-export function BlogPost({ children, meta, seo }) {
+export function BlogPost ({ children, meta, seo }) {
   const { isActive } = meta
   const { name, title, content } = seo
   return (
@@ -37,7 +37,8 @@ export function BlogPost({ children, meta, seo }) {
           width: -webkit-fill-available;
           padding: 0 2rem;
         }
-      `}</style>
+      `}
+      </style>
     </>
   )
 }

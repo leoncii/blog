@@ -1,8 +1,5 @@
-import firebase from '../firebase'
-import { increment } from '../firebase'
-
+import firebase, { increment } from '../firebase'
 const db = firebase.firestore()
-
 const mapCommentFromFirebaseToObject = (doc) => {
   const data = doc.data()
   const { date: { seconds }, img, name } = data
@@ -10,13 +7,15 @@ const mapCommentFromFirebaseToObject = (doc) => {
   const formatedDate = dateObj.toLocaleString()
   const normalized = {
     ...data,
+    img,
+    name,
     id: doc.id,
     date: formatedDate
   }
   return normalized
 }
 
-export async function getLikesFromUserId({ setUrlFirebase, session }) {
+export async function getLikesFromUserId ({ setUrlFirebase, session }) {
   return await db.collection('likesFromUser')
     .doc(setUrlFirebase)
     .set({
@@ -25,13 +24,13 @@ export async function getLikesFromUserId({ setUrlFirebase, session }) {
     })
 }
 
-export async function createComment({ comment, postUrl }) {
+export async function createComment ({ comment, postUrl }) {
   return await db.collection(postUrl)
     .doc()
     .set(comment, { merge: true })
 }
 
-export async function getMoreUrlComments({ urlPost }) {
+export async function getMoreUrlComments ({ urlPost }) {
   return await db.collection(urlPost)
     .orderBy('date', 'desc')
     .get()
@@ -40,7 +39,7 @@ export async function getMoreUrlComments({ urlPost }) {
     })
 }
 
-export function listenLatestComments({ setComments: callback, urlPost }) {
+export function listenLatestComments ({ setComments: callback, urlPost }) {
   return db.collection(urlPost)
     .orderBy('date', 'desc')
     .limit(3)
@@ -50,30 +49,30 @@ export function listenLatestComments({ setComments: callback, urlPost }) {
     })
 }
 
-
-export async function getLikesCount(urlPost) {
+export async function getLikesCount (urlPost) {
   return await db.collection('likes')
     .doc(urlPost)
     .get()
     .then(snap => {
       const q = snap.data()
-      console.log("getLikesCount", q);
+      console.log('getLikesCount', q)
     })
 }
 
-
-
-export async function getLikesFromPost(whichPost) {
+export async function getLikesFromPost (whichPost) {
   return await db.collection('blog')
     .doc(whichPost)
     .get()
     .then(snap => {
+      if (!snap.data()) {
+        return
+      }
       const { likes } = snap.data()
       return likes
     })
 }
 
-export async function postLikesFromWhichPost(whichPost) {
+export async function postLikesFromWhichPost (whichPost) {
   return await db.collection('blog')
     .doc(whichPost)
     .update({ likes: increment })

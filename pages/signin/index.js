@@ -1,19 +1,18 @@
-import { providers, signIn, getSession, csrfToken } from "next-auth/client"
-import { Button } from '../../components/Button'
-import { Message } from '../../components/svgs/message'
+import { providers, signIn, getSession, csrfToken } from 'next-auth/client'
 import Head from 'next/head'
 
-export default function Signin({ providers, csrfToken }) {
-  return <>
-    <Head>
-      <title>Iniciar sessión en Pim Pum Pam - Blog</title>
-      <meta name="robots" content="index" />
-      <meta name="description" content="Blog actualizado de javascript, NFT, Blockchain para la gente nueva" />
-    </Head>
-    <section>
-      <h3>Iniciar sessión en blog</h3>
-     <form method="post" action="/api/auth/signin/email">
-       {/* <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+export default function Signin ({ providers, csrfToken }) {
+  return (
+    <>
+      <Head>
+        <title>Iniciar sessión en Pim Pum Pam - Blog</title>
+        <meta name='robots' content='index' />
+        <meta name='description' content='Blog actualizado de javascript, NFT, Blockchain para la gente nueva' />
+      </Head>
+      <section>
+        <h3>Iniciar sessión en blog</h3>
+        <form method='post' action='/api/auth/signin/email'>
+          {/* <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label>
           <Message />
           <input
@@ -24,10 +23,10 @@ export default function Signin({ providers, csrfToken }) {
           />
         </label>
         <button type='submit' >Login with email</button> */}
-        {
+          {
           Object.values(providers).map(provider => {
-            if (provider.name === "Email") {
-              return;
+            if (provider.name === 'Email') {
+              return null
             }
             return (
               <div
@@ -43,15 +42,15 @@ export default function Signin({ providers, csrfToken }) {
                   </button>
                 </div>
                 <div className='google_container'>
-                  <div className='google'></div>
+                  <div className='google' />
                 </div>
               </div>
             )
           })
         }
-      </form>
-    </section>
-    <style jsx>{`
+        </form>
+      </section>
+      <style jsx>{`
       section {
         display: flex;
         flex-direction: column;
@@ -131,11 +130,13 @@ export default function Signin({ providers, csrfToken }) {
         justify-content: center;
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAjVBMVEVHcEwwnU/VPjYvnk/VPjUvnVDWSDRQcKehaUFQcKhOc6Iunk7VPTXVPjVQcKdQcKjZWDMvnU7VPTXvtikwnVDWPTXvtSnurSpQcKfVPjYunk7ttChQcajstSgwn0zttCjvtShQcKlQcKgvnk/VPjbvtSnjfi7bsy07n009inXYTTSDqD6bqzqnrTdTokc44COHAAAAInRSTlMAPc/b5r4jPxC/oJBVkIjlQGOjtyC/0/cggIB7X2BQoJ/Psru6sQAAAUhJREFUSMftlduWgiAUhjGBoRTT0uw4B8Gp5vT+jzeGOggCC5vb/iuX6/vYe6MoAI/cFRLTGeScw4LGHnha8EHgCk/BRZwK5YZAa2Ok4OZYDDKz8DNiFqbyu0HXNMY4jVfQxWOJp3IRaOUB/NvGIYGpjT+9d/zO831Y1+WHWN+Tx3WTpgjEnsKpbg0KvDsSKWWB7ZMeRdi0wkbeWVRa3hShbIW1Q1gqQsvXB4dQ/U/oWnr1FjyGVmd4aYWzfHOSeZ9lK8wV4SD4r8ve8Iw6IVFP2235T8ZYPuKPXUtH/VGffxqeIVuBaqt9X74vTERvKqlMIzRBrEtETLzeEQBBL7AwkzeReVNFIiaV6DnIgywKm+urcQK1KTXX8Z72WxuaDWbhG8NSgy2sB29v5DPHUc3HRVDgPt0BmoSLKlmEbvOHYZSRxx/8rvwCaQpYY51gRIUAAAAASUVORK5CYII=");
       }
-    `}</style>
-  </>
+    `}
+      </style>
+    </>
+  )
 }
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps (ctx) {
   const { req, res } = ctx
   const session = await getSession({ req })
 
@@ -144,7 +145,7 @@ export async function getServerSideProps(ctx) {
       Location: '/'
     })
     res.end()
-    return { props: {} };
+    return { props: {} }
   }
   return {
     props: {

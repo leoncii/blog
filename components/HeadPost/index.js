@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 export const HeadPost = (props) => {
   const { meta, isActive } = props
   const { imgUrl, title, description, readTime, date } = meta
@@ -77,5 +75,4 @@ export const HeadPost = (props) => {
       </style>
     </>
   )
-
 }

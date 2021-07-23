@@ -1,0 +1,47 @@
+import { BlogPost } from 'containers/BlogPost'
+import { HighlightCodeBlock } from 'utilities/HighlightCodeBlock.js'
+const b1 = `
+  npm install --save-dev eslint @babel/core @babel/eslint-parser eslint-config-next eslint-config-standard eslint-config-jsx eslint-config-react eslint-plugin-import eslint-plugin-node eslint-plugin-react eslint-plugin-promise
+`
+const b2 = `
+"eslintConfig": {
+    "parser": "@babel/eslint",
+    "extends": [
+      "standard",
+      "standard-jsx",
+      "standard-react"
+    ]
+}`
+
+export const meta = {
+  title: 'Eslint con StandardJs',
+  description: 'Configura de una manera rápida y sencílla tu Eslint con StandardJs 🐇',
+  date: 'jul 23, 2021',
+  readTime: 2,
+  imgUrl: "https://res.cloudinary.com/djc1umong/image/upload/v1627083109/eslint_sy6vio.jpg",
+  isActive: true
+}
+
+export const seo = {
+  name: "robots",
+  content: "nofollow",
+  title: "Eslint con EstandardJs simple y sencíllo de configurar"
+}
+
+export default function Standar_en_eslint ({ children }) {
+  return <BlogPost meta={meta} seo={seo}>{children}</BlogPost>
+}
+
+***Vamosss...! 🐇 primero instalamos: ***
+
+<HighlightCodeBlock block={b1} />
+
+Aunque parezcan un montón de dependencias no es así realmente pesa muy, muy poquito así que no
+te preocupes.
+
+Una vez instalado nos vamos a nuestro archivo de configuracion **.eslintrc.js | ...** no hacemos nada ✂ 👀 ✂. Si no que
+nos vamos a nuestro **package.json** y añadimos la siguiente configuracion
+
+<HighlightCodeBlock block={b2}/>
+
+Listo eso es todo 💖😎!

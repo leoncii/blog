@@ -3,14 +3,15 @@ import Moon from '../../svg/moon'
 import { Space } from '../../svg/space'
 import { HeroText } from '../../components/HeroText'
 
-export function Main() {
-  return <>
-    <div >
-      <Moon />
-      <HeroText />
-      <Space />
-    </div>
-    <style jsx>{`
+export function Main () {
+  return (
+    <>
+      <div>
+        <Moon />
+        <HeroText />
+        <Space />
+      </div>
+      <style jsx>{`
       div {
           display: flex;
           height: 70vh;
@@ -30,6 +31,8 @@ export function Main() {
           border: 10px solid red;
         }
       }
-  `}</style>
-  </>
+  `}
+      </style>
+    </>
+  )
 }

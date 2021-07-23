@@ -8,7 +8,6 @@ import { SendVerificationEmail } from '../../../email/sendVerification'
 
 console.log(process.env.EMAIL_SERVER_HOST)
 
-
 const firestore = (
   firebase.apps[0] ?? firebase.initializeApp(firebaseConfig)
 ).firestore()

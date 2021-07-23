@@ -8,13 +8,17 @@ export const Post = ({ post }) => {
   } = post
 
   return (
-    <article>
-      <HeadPost meta={meta} />
-      <div>
-        <Link href={`/blog${link}`}>
-          <a>Leer más 📖</a>
-        </Link>
-      </div>
+    <>
+      <Link href={`/blog${link}`}>
+        <a>
+          <article>
+            <HeadPost meta={meta} />
+            <div>
+              Leer más 📖
+            </div>
+          </article>
+        </a>
+      </Link>
       <style jsx>
         {`
         article {
@@ -34,6 +38,6 @@ export const Post = ({ post }) => {
         }
       `}
       </style>
-    </article >
+    </>
   )
 }

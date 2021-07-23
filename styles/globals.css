@@ -1,7 +1,6 @@
 #__next {
   --light: #f1a832;
   --light-0: #c08423;
-  
   --dark: #1d1d1d;
   --blue: #2e2cda;
   --dark-violet: #8c2364;
@@ -36,6 +35,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
 ul,
 li {
   padding: 0;
