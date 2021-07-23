@@ -1,13 +1,7 @@
 ## Leonardo Torrico Blog
 
-How to start:
+How to start: 🧀🧪
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-![alt text](http://url/to/img.png)
+![alt text](https://res.cloudinary.com/djc1umong/image/upload/v1626451217/spaceMirando_nzw8aj.jpg)
 
 Online ✔ [here](https://blog-leoncii.vercel.app)
