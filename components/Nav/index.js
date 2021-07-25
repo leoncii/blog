@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { Context } from '../../context/userProvider'
 import { Loading } from '../../svg/loading'
 
-export function Nav({ signOut, signIn, session }) {
+export function Nav ({ signOut, signIn, session }) {
   const [modal, setModal] = useState(false)
   const { loading } = useContext(Context)
   const router = useRouter()
@@ -16,14 +16,15 @@ export function Nav({ signOut, signIn, session }) {
     signOut()
   }
 
-  return <>
-    <nav>
-      <Link href='/'>
-        <a>
-          <Leonardo roll='#f7f2f7' />
-        </a>
-      </Link>
-      {
+  return (
+    <>
+      <nav>
+        <Link href='/'>
+          <a>
+            <Leonardo roll='#f7f2f7' />
+          </a>
+        </Link>
+        {
         session
           ? <>
             <div>
@@ -39,21 +40,21 @@ export function Nav({ signOut, signIn, session }) {
                   alt={session.user.name}
                 />
                 <Portal id={modal ? 'portal' : modal}>
-                  <Button modal={modal} border warning onClick={handleLogout} >
+                  <Button modal={modal} border warning onClick={handleLogout}>
                     Cerrar session
                   </Button>
                 </Portal>
               </picture>
             </div>
-          </>
+            </>
           : <>
             <Link href='/signin'>
               <a>Sign in</a>
             </Link>
-          </>
+            </>
       }
-    </nav>
-    <style jsx>{`
+      </nav>
+      <style jsx>{`
       nav {
         display: flex;
         height: 51px;
@@ -70,7 +71,7 @@ export function Nav({ signOut, signIn, session }) {
       }
       a {
         border-radius: 5px;
-        padding: ${!session ? ".2rem .6rem" : ".1rem .2rem"};
+        padding: ${!session ? '.2rem .6rem' : '.1rem .2rem'};
         font-weight: 400;
         cursor: pointer;
         color: var(--bg);
@@ -88,6 +89,8 @@ export function Nav({ signOut, signIn, session }) {
         cursor: pointer;
         user-select: none;
       }
-  `}</style>
-  </>
+  `}
+      </style>
+    </>
+  )
 }

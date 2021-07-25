@@ -35,6 +35,9 @@ export async function getMoreUrlComments ({ urlPost }) {
     .orderBy('date', 'desc')
     .get()
     .then(querySnapShot => {
+      if (!querySnapShot) {
+        return []
+      }
       return querySnapShot.docs.map(mapCommentFromFirebaseToObject)
     })
 }
@@ -45,6 +48,9 @@ export function listenLatestComments ({ setComments: callback, urlPost }) {
     .limit(3)
     .onSnapshot(({ docs }) => {
       const newComments = docs.map(mapCommentFromFirebaseToObject)
+      if (!newComments) {
+        return []
+      }
       callback(newComments)
     })
 }

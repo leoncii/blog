@@ -46,26 +46,20 @@ const options = {
     async signIn(user, account, profile) {
       if (account.type === 'email') {
         if (user.emailVerified || profile.verificationRequest) {
-          console.log('EMAIL')
           return true
         }
       }
       if (!profile.verified_email) {
-        console.error('[ - EMAIL - ]]')
         return "/signin"
       }
       if (account.provider === 'google' &&
         profile.verificationRequest == true) {
-        console.log('GOOGLE')
         return true
       } else {
-        console.log('ELSE')
         return true
       }
     },
     async session(session, token) {
-      console.log("SESSION", session)
-      console.log("TOKEN", token)
       return session
     },
     async redirect(url, baseUrl) {

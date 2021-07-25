@@ -6,11 +6,12 @@ import { Context } from '../../context/userProvider'
 
 export function ShareBar () {
   const { session } = useContext(Context)
-  const router = useRouter()
+  const { asPath } = useRouter()
   const [likes, setLikes] = useState(null)
   const [flag, setFlag] = useState(false)
-  const setUrlFirebase = router.asPath.slice(6, router.asPath.length)
+  const setUrlFirebase = asPath.slice(6, asPath.length)
 
+  console.log('SETURLFIREBASE', setUrlFirebase)
   const handleLikes = () => {
     if (session && setUrlFirebase && !flag) {
       setFlag(true)

@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from 'react'
 import { Comment } from '../Comment'
 import { Context } from '../../context/userProvider'
 import {
-  createComment,
   listenLatestComments,
   getMoreUrlComments
 } from '../../firebase/db'
@@ -11,8 +10,8 @@ import { Button } from '../../components/Button'
 import Link from 'next/link'
 import { Loading } from 'svg/loading'
 
-export function Comments() {
-  const { session, loading, signIn } = useContext(Context)
+export function Comments () {
+  const { session, loading } = useContext(Context)
   const [comments, setComments] = useState([])
   const { route } = useRouter()
   const [, , urlPost] = route.split('/')
@@ -28,44 +27,46 @@ export function Comments() {
       })
   }
 
-  const handleLoginWithGoogle = () => signIn('google')
-  return <>
-    <section>
-      <div>
-        <h3>Deja un comentario...</h3>
-        {
-          !session && <>
-            <Link href='/signin'>
-              <a>
-                Iniciar sesión
-              </a>
-            </Link>
-          </>
+  return (
+    <>
+      <section>
+        <div>
+          <h3>Deja un comentario...</h3>
+          {
+          !session &&
+            <>
+              <Link href='/signin'>
+                <a>
+                  Iniciar sesión
+                </a>
+              </Link>
+            </>
         }
-        {
+          {
           session && <Comment
             name={session.user.name}
             img={session.user.image}
             p=''
             date={new Date()}
-          />
+                     />
         }
-        {
+          {
           comments.length <= 0 && <Loading> Loading...</Loading>
-        }
-        {
-          comments.map(({ id, name, img, p, date }) => <Comment
-            key={id}
-            name={name}
-            img={img}
-            p={p}
-            date={date}
-          />)
-        }
-        <Button modal={true} onClick={handleGetMoreComments}>Ver más</Button>
-      </div>
-    </section>
-    <style jsx>{`
+          }
+          {
+          comments.map(({ id, name, img, p, date }) =>
+            <Comment
+              key={id}
+              name={name}
+              img={img}
+              p={p}
+              date={date}
+            />)
+          }
+          <Button modal onClick={handleGetMoreComments}>Ver más</Button>
+        </div>
+      </section>
+      <style jsx>{`
       section {
         text-align:center;
         padding-bottom: 3rem;
@@ -80,6 +81,8 @@ export function Comments() {
         margin: 2rem 0;
         padding-bottom: 2rem;
       }
-    `}</style>
-  </>
+    `}
+      </style>
+    </>
+  )
 }

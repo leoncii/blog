@@ -28,7 +28,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -62,9 +61,10 @@ h2 {
   text-align: center;
   font-size: 2rem;
   font-weight: bolder;
-  width: 305px;
-  line-height: 1.4;
+  line-height: 1.3;
   margin: 0 auto;
+  min-width: 170px;
+  max-width: 550px;
 }
 h3 {
   color: var(--copilot-dark);
@@ -116,11 +116,13 @@ pre code {
   position: fixed;
   display: flex;
   align-items: center;
-  top: 54px;
-  width: 325px;
+  top: 50px;
+  width: 250px;
   height: 45px;
-  background-color: #ffe2e2;
+  background-color: #fff;
+  border: 1px solid #222;
   right: 0;
+  border-top: transparent;
   color: #1b1f24;
   z-index: 144;
   text-align: center;

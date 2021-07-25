@@ -1,0 +1,97 @@
+import { BlogPost } from '../../../containers/BlogPost'
+import { HighlightCodeBlock } from '../../../utilities/HighlightCodeBlock.js'
+export const b1 = `
+    POST /token HTTP/1.1
+    Host: autorizacion.servidor.com
+    Authorization: Basic aisndtas86dtays8odasd
+  grant_type:authorization_code
+  &code=ABCAS!"#JIUAWNRASJKDN&
+  &redirect_uri:https://cliente.com/cb
+  &client_id=client id
+  &client_secret=qweqweqweqw98e90q98we9bnv
+`
+export const b2 = `https://autorizacion.servidor.com/authorize?**response_type**=code&**client_id**=the-client-id&state=xyza&**redirect_uri**=https://cliente.com/cb&**scope**=api_read`
+export const b3 = `https://cliente.com/cb?**code**=ABCAS!"#JIUAWNRASJKDN&**state**=xyza`
+export const meta = {
+  title: 'Logins modernos con OAuth 2.0',
+  description: 'Flujos y tipos de login modernos en nuestras apps',
+  date: 'jul 25, 2021',
+  readTime: 3,
+  imgUrl: "https://res.cloudinary.com/djc1umong/image/upload/v1626376679/nft_hagcam.jpg"
+}
+
+export const seo = {
+  name: "robots",
+  content: "nofollow",
+  title: "Todo lo que necesitas saber de los nft en 10 minutos"
+}
+
+export default function OAuth2({ children }) {
+  return <BlogPost meta={meta} seo={seo}>{children}</BlogPost>
+}
+
+## Oauth2.0
+Es un estándar moderno para la autorización de APIs que permite compartir información entre sitios sin necesidad
+de compartir la identidad 🧪.
+
+Implementa diferentes flujos de authenticación:
+> -  Client Credentials Grant, Authorization Code Grant, Resource Owner Password Credentials Grant, Authorization Code Grant(PKCE)
+
+## ¿Qué tipo de flujo debo escoger?
+
+Primero nos preguntamos si el cliente es el **Resource Owner** si la aplicación somos nosotros como usuarios si es así entonces usamos **Client Credentials Grant**, si este no es el caso
+entonces nos preguntamos si el cliente y la web app se executan del lado del servidor si es así entonces usamos **Authorization Code Grant**, si este no es el caso
+entonces nos preguntamos si al cliente se le pueden confiar los credenciales del usuario si es así entonces usamos el flujo de **Resource Owner Password Credentials Grant** si no es así
+entonces vemos si es una App Nativa o una SPA y usamos **Authorization Code Grant(PKCE)**
+
+> Aquí abajo hay un pequeño resumen de cada uno de los flujos de autorización 🈯.
+
+- Authorization code flow with the PKCE extension instead.
+- **Client Credentials Grant**: Este flujo le concede el clint id y client secret al cliente porque es de confiaza y sabe que nosotros somos el Resource Owner.
+- **Authorization Code Grant**: En vez de dar el access token directamente otorga un codigo que va a ser intercambiado en un futuro por un acces token es uno de los flujos mas seguros
+- **Resource Owner Password Credentials Grant**: Este flujo se utilizá para aplicaciónes que no pueden refrescar y no pueden utilizar los mecanismos para verificar e enviar los access token
+- **Authorization Code Grant**: Este flujo introduce un secreto( Code Verifier) creado por la llamada a la aplicacion que es verificado por el servidor, adicionalmente crea un valor transformado
+del secreto(Code Verifier) llamado Code Challenge y lo envia sobre el https para recuper un codigo de acceso.
+
+
+## Tipos de roles
+
+> - **Dueño del recurso**(owner)
+> - **Cliente**(Client)
+> - **Servidor de recursos protegidos**(Resource Server)
+> - **Servidor de autorización**(Authorization Server)
+
+**Dueño del recurso**
+- El propietario del recurso es el usuario 👨‍🎓que da la authorización a una aplicación, para acceder a su cuetan.
+- El acceso del usuario de limita al Scope(alcance)🚫 de la autorización otorgada(e.g. aceeso de lectura).
+- Se le llama el dueño de los recursos si bien la API no es tuya los datos que maneja si lo son 👳‍♂️.
+
+**Cliente**
+- Es la aplicación que desea acceder a la cuenta del usuario ⛓.
+- La app debe verificar antes de que el usuario acceda que los credenciales son autorizados 🤺.
+
+**Servidor de autorización**
+- Es el responsable de gestionar las peticiones de autorización.
+- Verifica ✅ la identidad de los usuarios y emite tokens de acceso a la aplicación cliente.
+- Muchas veces esta implementado por un tercero (👹Facebook, Twitter, Github, Google,...).
+- Puede ser el mismo servidor de recursos.
+
+**Servidor de recursos**
+- Es nuestra API 🤓, el servidor que aloja el recurso protegido al que queremos acceder.
+- Puede formar parte de la misma aplicación que el servidor de autenticación.
+- El cliente redirige al usuario al endpoint de autorización, con unos parametros
+<HighlightCodeBlock block={b2}/>
+
+> - response_type: tipo de flujo(code)
+> - client_id: Identificador del cliente
+> - redirect_uri: Url de vuelta a nuestra aplicación
+> - scope: El alcance de nuestra autorizacion
+
+ Cuando el cliente es validado
+<HighlightCodeBlock block={b3}/>
+
+> - code: Código que representa el consentimiento del usuario y su autorización
+> - state: Debe ser igual que en la petición
+> - Con el codigo hacemos una petición
+
+<HighlightCodeBlock block={b1}/>

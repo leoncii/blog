@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { Button } from '../Button'
 import { createComment } from '../../firebase/db'
-export function ChildComment({ img, name, date, session, p, url: postUrl }) {
-  const [text, setText] = useState('')
 
+export function ChildComment ({ img, name, date, session, p, url: postUrl }) {
+  const [text, setText] = useState('')
   const handleAddComment = (e) => {
     e.preventDefault()
     const comment = {
@@ -20,35 +19,40 @@ export function ChildComment({ img, name, date, session, p, url: postUrl }) {
     setText(e.target.value)
   }
 
-  return <>
-    <main>
-      <picture>
-        <img width={125} height={125} src={img} alt={`Avatar from ${name}`} />
-      </picture>
-      <div><b>{name}</b> </div>
-      {
-        session?.user.name === name && <><p>
-          <textarea
-            rows="5"
-            value={text}
-            onChange={handleChange}
-          ></textarea>
-          <button
-            id='btn-comment'
-            onClick={handleAddComment}
-            disabled={text.length < 1}
-          >Comentar</button>
-        </p>
-        </>
+  return (
+    <>
+      <main>
+        <picture>
+          <img width={125} height={125} src={img} alt={`Avatar from ${name}`} />
+        </picture>
+        <div><b>{name}</b> </div>
+        {
+        session?.user.name === name &&
+          <>
+            <p>
+              <textarea
+                rows='5'
+                value={text}
+                onChange={handleChange}
+              />
+              <button
+                id='btn-comment'
+                onClick={handleAddComment}
+                disabled={text.length < 1}
+              >Comentar
+              </button>
+            </p>
+          </>
       }
-      {
-        p.length >= 2 && <>
-          <small><i> {date.toString()}</i></small>
-          <p><em>{p}</em></p>
-        </>
+        {
+        p.length >= 2 &&
+          <>
+            <small><i> {date.toString()}</i></small>
+            <p><em>{p}</em></p>
+          </>
       }
-    </main >
-    <style jsx>{`
+      </main>
+      <style jsx>{`
       main {
         display: grid;
         place-items: center;
@@ -61,7 +65,7 @@ export function ChildComment({ img, name, date, session, p, url: postUrl }) {
         "image name date"
         ". p p"
         ". . .";
-        opacity: ${session ? 1 : .6};
+        opacity: ${session ? 1 : 0.6};
       }
       hr {
         height: 1px;
@@ -70,7 +74,7 @@ export function ChildComment({ img, name, date, session, p, url: postUrl }) {
         grid-row: 7;
       }
       textarea  {
-        display: ${p.length === 0 ? 'block' : 'none'};
+        display: ${p?.length === 0 ? 'block' : 'none'};
         grid-area: textarea;
         grid-column: 2;
         width: 100%;
@@ -80,7 +84,7 @@ export function ChildComment({ img, name, date, session, p, url: postUrl }) {
         margin-right: .6rem;
       }
       #btn-comment {
-        display: ${p.length === 0 ? 'block' : 'none'};
+        display: ${p?.length === 0 ? 'block' : 'none'};
         grid-row: 6;
         grid-column: 2;
         width: 100%;
@@ -144,7 +148,8 @@ export function ChildComment({ img, name, date, session, p, url: postUrl }) {
       text-align: left;
       margin-right: auto;
       }
-
-    `}</style>
-  </>
+    `}
+      </style>
+    </>
+  )
 }
