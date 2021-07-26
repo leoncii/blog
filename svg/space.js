@@ -9,6 +9,7 @@ export const Space = () => {
         height={375}
         className='space'
         layout='intrinsic'
+        objectFit='contain'
         alt='Mirando al espacio sideral sobre un campo verde y un fondo mágico'
       />
       <style jsx global>{`
