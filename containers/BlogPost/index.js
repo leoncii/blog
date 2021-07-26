@@ -6,6 +6,7 @@ import Head from 'next/head'
 export function BlogPost ({ children, meta, seo }) {
   const { isActive } = meta
   const { name, title, content } = seo
+
   return (
     <>
       <Head>

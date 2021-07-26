@@ -11,7 +11,6 @@ export function ShareBar () {
   const [flag, setFlag] = useState(false)
   const setUrlFirebase = asPath.slice(6, asPath.length)
 
-  console.log('SETURLFIREBASE', setUrlFirebase)
   const handleLikes = () => {
     if (session && setUrlFirebase && !flag) {
       setFlag(true)

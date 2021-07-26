@@ -1,13 +1,13 @@
-function importAll(r) {
+function importAll (r) {
   return r.keys().filter((fileName) => !fileName.includes('pages'))
     .map(fileName => {
       return {
-        link: fileName.substr(1).replace(/\/index\.mdx$/, ""),
+        link: fileName.substr(1).replace(/\/index\.mdx$/, ''),
         module: r(fileName)
       }
     })
 }
 
 export const posts = importAll(
-  require.context("./pages/blog/", true, /\.mdx$/)
-);
+  require.context('./pages/blog/', true, /\.mdx$/)
+)

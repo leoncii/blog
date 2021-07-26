@@ -1,7 +1,6 @@
 import { Main } from '../components/Main'
 import { Posts } from '../containers/Posts'
 import Head from 'next/head'
-
 export default function Home ({ props }) {
   return (
     <>

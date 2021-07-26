@@ -16,7 +16,7 @@ export const SendVerificationEmail = ({
   // const file = path.resolve(process.cwd() + '/public/leo.jpg')
   // const base64file = fs.readFileSync(file, 'base64')
   return new Promise((resolve, reject) => {
-    console.log(server)
+    log(server)
     nodemailer.createTransport(server)
       .sendMail(
         {
@@ -28,12 +28,12 @@ export const SendVerificationEmail = ({
         },
         (error, info) => {
           if (error) {
-            console.error("SEND_VERIFICATION_EMAIL_ERROR", email, error)
-            return reject("SEND_VERIFICATION_EMAIL_ERROR", error)
+            console.error('SEND_VERIFICATION_EMAIL_ERROR', email, error)
+            return reject('SEND_VERIFICATION_EMAIL_ERROR', error)
           }
-          console.log("[INFO]", info)
+          log('[INFO]', info)
           return resolve()
-        },
+        }
       )
   })
 }

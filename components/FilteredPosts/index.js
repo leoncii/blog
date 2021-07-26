@@ -1,6 +1,6 @@
 import { Post } from '../../components/Post'
 
-export const FilteredPosts = ({ search, filteredPostsWithMemo }) => {
+export const FilteredPosts = ({ filteredPostsWithMemo }) => {
   return (
     <>
       <div>
@@ -16,7 +16,7 @@ export const FilteredPosts = ({ search, filteredPostsWithMemo }) => {
         place-content: center;
         grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
         grid-gap: 1.85rem;
-        max-width: 1200px;
+        max-width: 950px;
         margin: 0 auto;
         margin-top: 3rem;
       }
