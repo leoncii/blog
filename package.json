@@ -41,6 +41,7 @@
       "standard",
       "standard-jsx",
       "standard-react"
-    ]
+    ],
+    "root": true
   }
 }
