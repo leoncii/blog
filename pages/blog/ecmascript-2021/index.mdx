@@ -1,0 +1,112 @@
+import { BlogPost } from '../../../containers/BlogPost'
+import { HighlightCodeBlock } from '../../../utilities/HighlightCodeBlock.js'
+
+export const b1 = `
+    // Si x es falso, entonces equivale a y
+    x ||= y
+    // Es igual a: \n
+    x || (x = y)
+    // Si x es verdadero, entonces equivale a y
+    x &&= y
+    // Es igual a: \n
+    x && (x = y)
+    // Si x es null o undefined, entonces equivale a y
+    x ??= y
+    // Es igual a : \n
+    x ?? (x = y)
+`
+export const b2 = `
+  // Cuesta al ojo 👀 observar que número es este son millones, billones...? 
+  1000000000
+  19436871.42
+  // ¡Con Numeric Separator!
+  1_000_000_000 // Son mil millones
+  300_000_000 //  Trescientos millones
+  19_436_871.42 // Se ve mejor que leer 19436871.42
+`
+export const b3 = `
+  const myPromises = [
+    fetch('/alguna-api'),
+    fetch('/otra-promisa'),
+    fetch('/un-lugar-muy-muy-lejos'),
+  ]
+  try {
+    // espera a la primera respuesta correcta que termine
+    const laMasRapida = await Promise.any(myPromises)
+    // La más rápida fue la de un-lugar-muy-muy-lejos 🌌
+    console.log(laMasRapida)
+  } catch (error) {
+    // ¡Todas las promesas han fallado!
+    console.assert(error instanceof AggregateError)
+    // Log the rejection values:
+    console.log(error.errors)
+    // → [
+    //     <TypeError: Failed to fetch /alguna-api>,
+    //     <TypeError: Failed to fetch /otra-promisa>,
+    //     <TypeError: Failed to fetch /un-lugar-muy-muy-lejos>
+    //   ]
+  }
+`
+
+export const b4 = `
+  // Necesito remplazar mis 📺 por 🔭
+  // Con replace
+  '📺📺📺📺📺📺'.replace('📺', '🔭')
+  // -> '🔭📺📺📺📺📺'
+  // Ahora con replaceAll
+  '📺📺📺📺📺📺'.replaceAll('📺', '🔭')
+  // -> '🔭🔭🔭🔭🔭🔭'
+`
+
+export const meta = {
+  title: 'ECMASCript2021 JavaScript última versión',
+  description: 'Versión de Javascript ES12 o ECMAScript 2021 aprobada por el  TC 39',
+  date: 'Aug 09, 2021',
+  readTime: 5,
+  tags: ["JavasCript"],
+  imgUrl: "https://res.cloudinary.com/djc1umong/image/upload/v1626376679/nft_hagcam.jpg"
+}
+
+export const seo = {
+  name: "robots",
+  content: "nofollow",
+  title: "Qué podemos hacer en la última versión de JavaScript "
+}
+
+export default function ECMAScript2021({children}) {
+  return <BlogPost seo={seo} meta={meta}>{children}</BlogPost>
+}
+
+
+El grupo internacional TC39 de *JavaScript* que se encargan de evolucionar y mantener la definicion de *JavaScript* nos traen
+una nueva sintaxis chula que en este post te explicamos.
+
+## 1. Logical Assignment Operators (&&=  ||=  ??=)
+
+Los operadores lógicos *&&* *||* y *??* ahora puedes asignar valores de una forma más rapida.
+Exelente para dar valores por defecto a nuestras variables.
+
+<HighlightCodeBlock block={b1} />
+
+## Numeric Separator
+
+En JavasCript cuando estamos manejando numeros es difícil ver la cantidad de digitos que puede tener nuestra variable ahora en ECMAScript 2021
+nos permite separarlos con *_*. 
+
+<HighlightCodeBlock block={b2} />
+
+## Promise.any
+
+Ahora con una lista de promesas que necesitas resolver, y esperar que cualquiera de ellas se resuelva continue
+con tu código 💻.
+
+Cuando la promesa falla, se devuelve una instancia de *AggregateError*. Este error es una instancia de Error y
+tiene una propiedad llamada errors que contiene una lista de errores para cada promesa que falló. Ver más abajo 🙈.
+
+<HighlightCodeBlock block={b3} />
+
+## ReplaceAll
+
+Tan simple como:
+
+<HighlightCodeBlock block={b4} />

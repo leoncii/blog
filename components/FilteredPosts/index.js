@@ -5,9 +5,9 @@ export const FilteredPosts = ({ filteredPostsWithMemo }) => {
     <>
       <div>
         {
-        filteredPostsWithMemo.map((post) => {
-          return <Post key={post.link} post={post} />
-        })
+          filteredPostsWithMemo.map((post) => {
+            return <Post key={post.link} post={post} />
+          })
       }
       </div>
       <style jsx>{`

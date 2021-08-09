@@ -1,6 +1,6 @@
 import { isBrowser } from './isBrowser'
 
-export default function ScroollProgress() {
+export default function ScroollProgress () {
   if (isBrowser()) {
     const currentState = document.body.scrollTop ||
       document.documentElement.scrollTop
@@ -8,5 +8,4 @@ export default function ScroollProgress() {
     const scrollStatePercentage = (currentState / pageHeight) * 100
     window.document.querySelector('.page-scroll-indicator > .progress').style.width = scrollStatePercentage + '%'
   }
-
 }

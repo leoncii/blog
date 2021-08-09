@@ -3,7 +3,6 @@ export const Space = () => {
   return (
     <>
       <Image
-        loading='lazy'
         src='https://res.cloudinary.com/djc1umong/image/upload/v1626451217/spaceMirando_nzw8aj.jpg'
         width={800}
         height={375}
@@ -11,6 +10,7 @@ export const Space = () => {
         layout='intrinsic'
         objectFit='contain'
         alt='Mirando al espacio sideral sobre un campo verde y un fondo mágico'
+        loading='lazy'
       />
       <style jsx global>{`
         @media only screen and (min-width: 787px) {
