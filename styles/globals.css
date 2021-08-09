@@ -22,7 +22,7 @@
 }
 
 html,
-body {
+body, *, #__next {
   padding: 0;
   margin: 0;
 }

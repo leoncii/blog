@@ -22,8 +22,8 @@ export function HeroText () {
         display: block;
         place-content: center;
         font-weight: 800;
-        text-shadow: 0 -1px 3px var(--green);
-
+        text-shadow: 0 0px 3px var(--copilot-white);
+        font-size: 4.5rem;
       }
 
       p {
