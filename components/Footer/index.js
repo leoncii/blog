@@ -1,16 +1,17 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export function Footer() {
+export function Footer () {
   const { route } = useRouter()
 
-  return <>
-    <section>
-      <small>Leonardo Torrico Becerra</small>
-    </section>
-    <style jsx>{`
+  return (
+    <>
+      <section>
+        <small>Leonardo Torrico Becerra</small>
+      </section>
+      <style jsx>{`
     section {
-     height: ${route === '/' ? '100vh' : "200px"};
+     height: ${route === '/' ? '100vh' : '200px'};
      background: linear-gradient(217deg, #1a1414cc, #141111cc 70.71%),
             linear-gradient(127deg, #141414cc, #141414cc 70.71%),
             linear-gradient(336deg, #000000cc, #180404cc 70.71%);
@@ -22,7 +23,6 @@ export function Footer() {
      place-items: center;
      padding-left:1rem;
      padding-right:1rem;
-
      color: var(--light-green);
     }
     h4 {
@@ -37,9 +37,10 @@ export function Footer() {
     }
     small {
       color: var(--bg);
-      text-shadow: 0px 0px 1px #fff,
-                   0 0 3px darkblue;
+      text-shadow: 0 0 3px darkblue;
     }
-  `}</style>
-  </>
+  `}
+      </style>
+    </>
+  )
 }

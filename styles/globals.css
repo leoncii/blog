@@ -12,10 +12,10 @@
   --breakpoint-m: 768px;
   --copilot-dark: #1b1f24;
   --copilot-white: #949da7;
-  font: 100%/1.75 'AllianceNo1 Web', serif;
-  word-wrap: break-word;
-  background-color: var(--bg);
-  overflow: hidden;
+    font: 100%/1.75 'AllianceNo1 Web', serif;
+    word-wrap: break-word;
+    background-color: var(--bg);
+    overflow: hidden;
   --gradient-to: #84edc1;
   --gradient-from: #79c0ff;
   --gradient-stops: var(--gradient-from),var(--gradient-to,rgba(121,192,255,0));
