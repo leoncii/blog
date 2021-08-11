@@ -18,6 +18,11 @@ export const Space = () => {
             min-width: -webkit-fill-available;
           }
         }
+        @media only screen and (max-width: 468px) {
+          .space {
+            contain: size;
+          }
+        }
       `}
       </style>
     </>

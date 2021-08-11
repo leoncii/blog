@@ -21,8 +21,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
     dirs: ['pages', 'components', 'containers', 'firebase']
-  },
-  assetPrefix: isProd ? 'https://www.googletagmanager.com/gtag/js?id=G-TQRHRT6ZW9' : ''
+  }
 }
 
 module.exports = withMDX(nextConfig)

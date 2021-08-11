@@ -2,7 +2,7 @@ export function HeroText () {
   return (
     <>
       <div>
-        <h1>Blog T-Leo</h1>
+        <h1>Blog T.Leo</h1>
         <p>
           Pim sen pum ci pam llo
         </p>
@@ -18,12 +18,12 @@ export function HeroText () {
         margin: 3% 6% 0;
       }
       h1 {
-        color: var(--copilot-dark);
         display: block;
         place-content: center;
         font-weight: 800;
+        min-width: 20px;
         text-shadow: 0 0px 3px var(--copilot-white);
-        font-size: 4.5rem;
+        font-size: 4.2rem;
       }
 
       p {
@@ -37,6 +37,24 @@ export function HeroText () {
           position: static;
           height: 77vh;
           width: 800px;
+        }
+    }
+      @media only screen and (max-width: 787px) {
+        h1 {
+          text-shadow: none;
+          color: #dfdede;
+          background-color: rgba(0,0,0,.4);
+          padding: 0 8px 0 8px;
+        }
+        div {
+          padding-top: 2rem;
+          margin:0;
+        }
+        p {
+          padding-top: 2.5rem;
+          letter-spacing: 1.2px;
+          text-shadow: 1px solid #eee;
+          color: var(--light);
         }
     }
     `}
