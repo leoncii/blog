@@ -16,7 +16,7 @@ export function BlogPost ({ children, meta, seo }) {
       <div>
         <HeadPost isActive meta={meta} />
         <article>{children}</article>
-        <Comments />
+        {/* <Comments /> */}
       </div>
       <ShareBar />
       <style jsx>{`

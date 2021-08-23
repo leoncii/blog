@@ -1,45 +1,33 @@
-import { useContext } from 'react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
-import { Heart } from '../../svg/heart'
-import { HeartLiked } from '../../svg/heartLiked'
-import { Context } from '../../context/userProvider'
-import { Loading } from 'svg/loading'
+import { useRouter } from 'next/router'
 
-export function Share({ onClick, likes, setUrlFirebase, verify, session }) {
-  const { loading } = useContext(Context)
-  return <>
-    <section>
-      <div className='bonico'>
-        <div className='likes' onClick={onClick}>
-          {
-            loading
-              ? <Loading />
-              : <span> {!session ? <Heart /> : <HeartLiked />} </span>
-          }
-          <span>{likes}</span>
-          {!session ? <small>signin</small> : ''}
+export function Share ({ onClick, likes, setUrlFirebase, verify, session, ...restOfProps }) {
+  const { pathname } = useRouter()
+  return (
+    <>
+      <section>
+        <div className='bonico'>
+          <div className='share'>
+            <small>
+              <FacebookShareButton
+                url={`https://simple-pimpumpam.com${pathname}`}
+                text='Check out this website: www.google.com'
+              >
+                <span>Facebook</span>
+              </FacebookShareButton>
+            </small>
+            <small>
+              <TwitterShareButton
+                url={`https://simple-pimpumpam.com${pathname}`}
+                text='Check out this website: www.google.com'
+              >
+                <span>Twitter</span>
+              </TwitterShareButton>
+            </small>
+          </div>
         </div>
-        <div className='share'>
-          <small>
-            <FacebookShareButton
-              url='google.com'
-              text="Check out this website: www.google.com"
-            >
-              <span>Facebook</span>
-            </FacebookShareButton>
-          </small>
-          <small>
-            <TwitterShareButton
-              url='google.com'
-              text="Check out this website: www.google.com"
-            >
-              <span>Twitter</span>
-            </TwitterShareButton>
-          </small>
-        </div>
-      </div>
-    </section>
-    <style jsx>{`
+      </section>
+      <style jsx>{`
       section {
         position: fixed;
         bottom: 0;
@@ -82,6 +70,8 @@ export function Share({ onClick, likes, setUrlFirebase, verify, session }) {
       .likes small:first-of-type {
         color: red;
       }
-    `}</style>
-  </>
+    `}
+      </style>
+    </>
+  )
 }
